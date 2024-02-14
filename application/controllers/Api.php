@@ -50,8 +50,8 @@ class API extends CI_Controller
                     'status' => true,
                     'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
                     'link' => base_url('assets/ads/'. $folder .'/dark_square_ad.jpg'),
-                    'alt' => str_replace('_', ' ', $type) . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $type)
+                    'alt' => $type . ' Advetisment for ADS',
+                    'href' => base_url('track/'. $folder)
                 )
                 );
         }
@@ -63,8 +63,8 @@ class API extends CI_Controller
                     'status' => true,
                     'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
                     'link' => base_url('assets/ads/'. $folder .'/horizontal_ad.jpg'),
-                    'alt' => str_replace('_', ' ', $type) . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $type)
+                    'alt' => $type . ' Advetisment for ADS',
+                    'href' => base_url('track/'. $folder)
                 )
                 );
         }
@@ -76,8 +76,8 @@ class API extends CI_Controller
                     'status' => true,
                     'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
                     'link' => base_url('assets/ads/'. $folder .'/horizontal_slip_ad.jpg'),
-                    'alt' => str_replace('_', ' ', $type) . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $type)
+                    'alt' => $type . ' Advetisment for ADS',
+                    'href' => base_url('track/'. $folder)
                 )
                 );
         }
@@ -89,8 +89,8 @@ class API extends CI_Controller
                     'status' => true,
                     'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
                     'link' => base_url('assets/ads/'. $folder .'/light_square_ad.jpg'),
-                    'alt' => str_replace('_', ' ', $type) . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $type)
+                    'alt' => $type . ' Advetisment for ADS',
+                    'href' => base_url('track/'. $folder)
                 )
                 );
         }
@@ -102,8 +102,8 @@ class API extends CI_Controller
                     'status' => true,
                     'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
                     'link' => base_url('assets/ads/'. $folder .'/think_vertical_ad.jpg'),
-                    'alt' => str_replace('_', ' ', $type) . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $type)
+                    'alt' => $type . ' Advetisment for ADS',
+                    'href' => base_url('track/'. $folder)
                 )
                 );
         }
@@ -115,8 +115,8 @@ class API extends CI_Controller
                     'status' => true,
                     'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
                     'link' => base_url('assets/ads/'. $folder .'/vertical_strip_ad.jpg'),
-                    'alt' => str_replace('_', ' ', $type) . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $type)
+                    'alt' => $type . ' Advetisment for ADS',
+                    'href' => base_url('track/'. $folder)
                 )
                 );
         }
@@ -127,8 +127,8 @@ class API extends CI_Controller
                     'status' => false,
                     'message' => 'We did not find a ' . str_replace('_', ' ', $type) . ' advertisment!',
                     'link' => base_url('assets/ads/'. $folder .'/vertical_strip_ad.jpg'),
-                    'alt' => str_replace('_', ' ', $type) . ' Advetisment Not Found!',
-                    'href' => base_url('track')
+                    'alt' => $type . ' Advetisment Not Found!',
+                    'href' => base_url('trfolder)
                 )
                 );
         }
