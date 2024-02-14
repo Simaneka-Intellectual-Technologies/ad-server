@@ -84,7 +84,7 @@ if ($_SERVER['DOCUMENT_ROOT'] == 'C:/xampp/htdocs') {
 	$user = 'root';
 } else {
 	$database = 'u532240888_ads';
-	$password = 'Bh6B1E:qG/^:';
+	$password = '2$bQudu2!8u1';
 	$user = 'u532240888_advertiser';
 }
 
