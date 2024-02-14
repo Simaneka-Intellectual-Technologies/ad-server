@@ -7,11 +7,10 @@ $route['action/(:any)'] = 'main/$1';
 
 $url = $this->uri->segment(1);
 
-// if ($url == 'admin') {
-//     $route['ajax/(:any)'] = 'admin/ajax/$1';
-//     $route['(any:)/(any:)/(:any)'] = 'admin/$1/$2/$3';
-//     $route['page/(:any)/(:any)/(:any)'] = 'admin/page/$1/$2/$3';
-// }
+if ($url == 'api') {
+    $route[''] = 'api/index';
+    $route['get/(:any)'] = 'api/$1';;
+}
 
 
 
