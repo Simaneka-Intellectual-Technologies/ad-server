@@ -128,7 +128,7 @@ class API extends CI_Controller
                     'message' => 'We did not find a ' . str_replace('_', ' ', $type) . ' advertisment!',
                     'link' => base_url('assets/ads/'. $folder .'/vertical_strip_ad.jpg'),
                     'alt' => $type . ' Advetisment Not Found!',
-                    'href' => base_url('trfolder)
+                    'href' => base_url('track')
                 )
                 );
         }
