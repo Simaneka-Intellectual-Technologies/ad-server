@@ -24,13 +24,13 @@ class Main_model extends CI_Model
 	public function get_ad($type)
 	{
 		
-		$this->db->where('ad_id', $id);
-		$this->db->set('impressions', '`impressions`+ 1', FALSE);
-		$this->db->update('ads');
 
 		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND type = '" . $type ."' AND status = 1";
 		$query = $this->db->query($sql);
 
+		$this->db->where('ad_id', $query->row_array()['ad_id']);
+		$this->db->set('impressions', '`impressions`+ 1', FALSE);
+		$this->db->update('ads');
 
 		return $query->row_array();
 	}
