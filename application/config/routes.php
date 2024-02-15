@@ -10,6 +10,7 @@ $url = $this->uri->segment(1);
 if ($url == 'api') {
     $route[''] = 'api/index';
     $route['get/(:any)'] = 'api/$1';;
+    $route['track/(:any)'] = 'api/track/$1';;
 }
 
 

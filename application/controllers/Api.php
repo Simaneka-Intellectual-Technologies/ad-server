@@ -69,37 +69,56 @@ class API extends CI_Controller
         $folder = strtolower(str_replace(' ', '_', $type));
         if(file_exists(FCPATH . 'assets/ads/'. $folder))
         {
-            echo json_encode(
-                array(
-                    'status' => true,
-                    'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
-                    'link' => base_url('assets/ads/'. $folder .'/'. $folder .'_ad.jpg'),
-                    'alt' => $type . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $folder),
-                    'site' => $site[0]['site_name'],
-                    'website' => $site[0]['link'],
-                )
-            );
+            $ad = $this->main_model->get_ad($type);
+
+            if($ad)
+            {
+                echo json_encode(
+                    array(
+                        'status' => true,
+                        'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
+                        'link' => base_url('assets/ads/'. $folder .'/'. $ad['file']),
+                        'alt' => $type . ' Advetisment for ADS',
+                        'href' => base_url('api/track/'. $ad['ad_id']),
+                        'site' => $site[0]['site_name'],
+                        'website' => $site[0]['link'],
+                    )
+                );
+            }
+            else
+            {
+                echo json_encode(
+                    array(
+                        'status' => false,
+                        'message' => 'There are no ' . str_replace('_', ' ', $type) . ' advertisments available!',
+                        'link' => base_url('assets/ads/extras/banner-advertising-online.jpg'),
+                        'alt' => $type . ' Advetisment Not Listed!',
+                        'href' => base_url('track'),
+                        'site' => $site[0]['site_name'],
+                        'website' => $site[0]['link'],
+                    )
+                );
+            }
         }
         else
         {
             echo json_encode(
                 array(
                     'status' => false,
-                    'message' => 'We did not find a ' . str_replace('_', ' ', $type) . ' advertisment!',
+                    'message' => 'WWe do not have ' . str_replace('_', ' ', $type) . ' advertisments!',
                     'link' => base_url('assets/ads/extras/banner-advertising-online.jpg'),
                     'alt' => $type . ' Advetisment Not Found!',
                     'href' => base_url('track'),
                     'site' => $site[0]['site_name'],
                     'website' => $site[0]['link'],
-                    'thing' => base_url('assets/ads/'. $folder),
-                    'thing1' => APPPATH,
-                    'thin3' => FCPATH,
-                    'thing4' => BASEPATH,
-                    'thing5' => SYSDIR,
-                    'thing6' => __FILE__,
                 )
             );
         }
+    }
+    public function track($id)
+    {
+        $ad = $this->main_model->update_clicks($id);
+
+        print_r($ad);
     }
 }
