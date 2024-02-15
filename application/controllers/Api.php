@@ -67,7 +67,7 @@ class API extends CI_Controller
     public function response($type, $site)
     {
         $folder = strtolower(str_replace(' ', '_', $type));
-        if(file_exists(base_url('assets/ads/'. $folder)))
+        if(file_exists(FCPATH . 'assets/ads/'. $folder))
         {
             echo json_encode(
                 array(
