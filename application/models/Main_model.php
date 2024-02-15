@@ -21,24 +21,18 @@ class Main_model extends CI_Model
 
 		return $this->db->get_where('ads', $where)->row_array();
 	}
-	public function update_impressions($table, $data)
-	{
-		return $this->db->get_where($table, $data)->result_array();
-	}
 	public function get_ad($type)
 	{
-		// $where = array(
-		// 	'type' => $type,
-		// 	'status' => 1,
-		// 	'DATE(start_date) <', date('Y-m-d'),
-		// 	// 'end_date >=', date('Y-m-d')
-		// );
+		
+		$this->db->where('ad_id', $id);
+		$this->db->set('impressions', '`impressions`+ 1', FALSE);
+		$this->db->update('ads');
 
 		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND type = '" . $type ."' AND status = 1";
 		$query = $this->db->query($sql);
-		return $query->row_array();
 
-		// return $this->db->get_where('ads', $where)->row_array();
+
+		return $query->row_array();
 	}
 	public function buildRandomString()
 	{
