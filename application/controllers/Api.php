@@ -7,23 +7,47 @@ class API extends CI_Controller
 	}
     public function get()
     {
-        $auth_code = $this->input->request_headers()['authorisation'];
-
-        $where = array(
-            'auth_code' => $auth_code
-        );
-        if($this->main_model->get_where('sites', $where))
+        if($this->input->request_headers()['authorisation'])
         {
-            $type = $this->input->get('type');
-            if (isset($type) && $type != '') {
-                $this->response($type);
+            $auth_code = $this->input->request_headers()['authorisation'];
+
+            $where = array(
+                'auth_code' => $auth_code
+            );
+            $site = $this->main_model->get_where('sites', $where);
+            if($site)
+            {
+                $type = $this->input->get('type');
+                if (isset($type) && $type != '') {
+                    $this->response($type, $site);
+                }
+                else {
+                    echo json_encode(
+                        array(
+                            'status' => false,
+                            'message' => 'You did not specify what type of add you want!'
+                        )
+                    );
+                }
+            }
+            else {
+                echo json_encode(
+                    array(
+                        'status' => false,
+                        'message' => 'You are not allowed to get ads!'
+                    )
+                );
             }
         }
-        // XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz
-        // Qn4dApbuBETjqM8hsYJFPweygXKa3k9V
-        // e74HEtShpdvfTrXQwg3bsNynBJcPq2a8
-        // bjDw4NtKucrnQheVzP6aYAygEvfR28dB
-        // yLvHcnkezNZFbEKY96DsGuUj8BSg72qf
+        else 
+        {
+            echo json_encode(
+                array(
+                    'status' => false,
+                    'message' => 'You did not give us your authorisation token!'
+                )
+            );
+        }
         // YJ6kTKj7pcemMXVqLNCrPvB4n2HSf8EU
         // C2yM9apbB3UscfheT6Y8NkxzwgDAtGQV
         // nvy2Uh3k7zXERMWBmeKJjCxLNr6Za9Dg
@@ -40,85 +64,22 @@ class API extends CI_Controller
         // VDscPNFgKq7wpn63Zb2kHGWm4ASLERvM
         // fK7gFZeYQBduwJVNypHmzGjPcDShW695
     }
-    public function response($type)
+    public function response($type, $site)
     {
         $folder = strtolower(str_replace(' ', '_', $type));
-        if($type == 'Dark Square')
+        if(file_exists(base_url('assets/ads/'. $folder)))
         {
             echo json_encode(
                 array(
                     'status' => true,
                     'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
-                    'link' => base_url('assets/ads/'. $folder .'/dark_square_ad.jpg'),
+                    'link' => base_url('assets/ads/'. $folder .'/'. $folder .'_ad.jpg'),
                     'alt' => $type . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $folder)
+                    'href' => base_url('track/'. $folder),
+                    'site' => $site[0]['site_name'],
+                    'website' => $site[0]['link'],
                 )
-                );
-        }
-        
-        elseif($type == 'Thick Horizontal Strip')
-        {
-            echo json_encode(
-                array(
-                    'status' => true,
-                    'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
-                    'link' => base_url('assets/ads/'. $folder .'/horizontal_ad.jpg'),
-                    'alt' => $type . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $folder)
-                )
-                );
-        }
-        
-        elseif($type == 'Horizontal Strip')
-        {
-            echo json_encode(
-                array(
-                    'status' => true,
-                    'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
-                    'link' => base_url('assets/ads/'. $folder .'/horizontal_slip_ad.jpg'),
-                    'alt' => $type . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $folder)
-                )
-                );
-        }
-        
-        elseif($type == 'Light Square')
-        {
-            echo json_encode(
-                array(
-                    'status' => true,
-                    'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
-                    'link' => base_url('assets/ads/'. $folder .'/light_square_ad.jpg'),
-                    'alt' => $type . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $folder)
-                )
-                );
-        }
-        
-        elseif($type == 'Think Vertical Strip')
-        {
-            echo json_encode(
-                array(
-                    'status' => true,
-                    'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
-                    'link' => base_url('assets/ads/'. $folder .'/think_vertical_ad.jpg'),
-                    'alt' => $type . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $folder)
-                )
-                );
-        }
-        
-        elseif($type == 'Vertical Strip')
-        {
-            echo json_encode(
-                array(
-                    'status' => true,
-                    'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
-                    'link' => base_url('assets/ads/'. $folder .'/vertical_strip_ad.jpg'),
-                    'alt' => $type . ' Advetisment for ADS',
-                    'href' => base_url('track/'. $folder)
-                )
-                );
+            );
         }
         else
         {
@@ -126,11 +87,13 @@ class API extends CI_Controller
                 array(
                     'status' => false,
                     'message' => 'We did not find a ' . str_replace('_', ' ', $type) . ' advertisment!',
-                    'link' => base_url('assets/ads/'. $folder .'/vertical_strip_ad.jpg'),
+                    'link' => base_url('assets/ads/extras/banner-advertising-online.jpg'),
                     'alt' => $type . ' Advetisment Not Found!',
-                    'href' => base_url('track')
+                    'href' => base_url('track'),
+                    'site' => $site[0]['site_name'],
+                    'website' => $site[0]['link'],
                 )
-                );
+            );
         }
     }
 }
