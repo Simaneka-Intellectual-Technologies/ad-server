@@ -27,12 +27,10 @@ class Main_model extends CI_Model
 	}
 	public function get_ad($type)
 	{
-		echo date('Y-m-d');
-		die();
 		$where = array(
 			'type' => $type,
 			'status' => 1,
-			'start_date <=', date('Y-m-d'),
+			'start_date <', date('Y-m-d'),
 			// 'end_date >=', date('Y-m-d')
 		);
 
