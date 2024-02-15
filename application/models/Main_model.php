@@ -34,7 +34,7 @@ class Main_model extends CI_Model
 			'end_date >=', date('Y-m-d')
 		);
 
-		return $this->db->get_where('ads', $data)->row_array();
+		return $this->db->get_where('ads', $where)->row_array();
 	}
 	public function buildRandomString()
 	{
