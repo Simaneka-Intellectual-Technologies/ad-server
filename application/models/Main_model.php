@@ -30,7 +30,7 @@ class Main_model extends CI_Model
 		$where = array(
 			'type' => $type,
 			'status' => 1,
-			'start_date <', date('Y-m-d'),
+			'DATE(start_date) <', date('Y-m-d'),
 			// 'end_date >=', date('Y-m-d')
 		);
 
