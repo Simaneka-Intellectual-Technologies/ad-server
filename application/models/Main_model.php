@@ -27,14 +27,18 @@ class Main_model extends CI_Model
 	}
 	public function get_ad($type)
 	{
-		$where = array(
-			'type' => $type,
-			'status' => 1,
-			'DATE(start_date) <', date('Y-m-d'),
-			// 'end_date >=', date('Y-m-d')
-		);
+		// $where = array(
+		// 	'type' => $type,
+		// 	'status' => 1,
+		// 	'DATE(start_date) <', date('Y-m-d'),
+		// 	// 'end_date >=', date('Y-m-d')
+		// );
 
-		return $this->db->get_where('ads', $where)->row_array();
+		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND type = '" . $type ."' AND status = 1";
+		$query = $this->db->query($sql);
+		return $query->row_array();
+
+		// return $this->db->get_where('ads', $where)->row_array();
 	}
 	public function buildRandomString()
 	{
