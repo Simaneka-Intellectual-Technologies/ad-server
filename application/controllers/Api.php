@@ -119,6 +119,6 @@ class API extends CI_Controller
     {
         $ad = $this->main_model->update_clicks($id);
 
-        header('Locaiton: ' . $ad['redirect_link']);
+        header('Location: ' . $ad['redirect_link']);
     }
 }
