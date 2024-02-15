@@ -92,7 +92,12 @@ class API extends CI_Controller
                     'href' => base_url('track'),
                     'site' => $site[0]['site_name'],
                     'website' => $site[0]['link'],
-                    'thing' => base_url('assets/ads/'. $folder)
+                    'thing' => base_url('assets/ads/'. $folder),
+                    'thing1' => APPPATH,
+                    'thin3' => FCPATH,
+                    'thing4' => BASEPATH,
+                    'thing5' => SYSDIR,
+                    'thing6' => __FILE__,
                 )
             );
         }
