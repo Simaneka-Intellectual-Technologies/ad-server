@@ -3,7 +3,7 @@ class API extends CI_Controller
 {
 	public function index()
 	{
-		echo 'Hello!';
+		echo 'Hello 123456789!';
 	}
     public function get()
     {
