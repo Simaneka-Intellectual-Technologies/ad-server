@@ -7,7 +7,7 @@ class API extends CI_Controller
 	}
     public function get()
     {
-        if($this->input->request_headers()['authorisation'])
+        if(isset($this->input->request_headers()['authorisation']))
         {
             $auth_code = $this->input->request_headers()['authorisation'];
 
