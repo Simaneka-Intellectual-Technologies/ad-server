@@ -106,7 +106,7 @@ class API extends CI_Controller
                 array(
                     'status' => false,
                     'message' => 'We do not have ' . str_replace('_', ' ', $type) . ' advertisments!',
-                    'link' => base_url('assets/ads/extras/banner-advertising-online.jpg'),
+                    'link' => base_url('assets/ads/default.jpg'),
                     'alt' => $type . ' Advetisment Not Found!',
                     'href' => base_url('track'),
                     'site' => $site[0]['site_name'],
