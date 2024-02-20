@@ -105,7 +105,7 @@ class API extends CI_Controller
             echo json_encode(
                 array(
                     'status' => false,
-                    'message' => 'WWe do not have ' . str_replace('_', ' ', $type) . ' advertisments!',
+                    'message' => 'We do not have ' . str_replace('_', ' ', $type) . ' advertisments!',
                     'link' => base_url('assets/ads/extras/banner-advertising-online.jpg'),
                     'alt' => $type . ' Advetisment Not Found!',
                     'href' => base_url('track'),

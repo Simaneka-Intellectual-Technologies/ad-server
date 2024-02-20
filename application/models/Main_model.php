@@ -23,7 +23,7 @@ class Main_model extends CI_Model
 	}
 	public function get_ad($type)
 	{
-		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND type = '" . $type ."' AND status = 1";
+		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND type = '" . $type ."' AND status = 1 ORDER BY RAND() LIMIT 1";
 		$query = $this->db->query($sql);
 
 		$this->db->where('ad_id', $query->row_array()['ad_id']);
