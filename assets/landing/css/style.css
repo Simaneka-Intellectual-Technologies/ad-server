@@ -4,7 +4,9 @@
 .form-contact .form-group .btn_1 {
   background-image: linear-gradient(to left, #fff 0%, #fff 51%, #fff 100%);
 }
-
+html {
+  scroll-behavior: smooth;
+}
 /**************** extend css start ****************/
 /**************** common css start ****************/
 /* line 3, ../../01 cl html template/03_jun 2019/185 Ecobit SAAS html/sass/_common.scss */
