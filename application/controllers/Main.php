@@ -5,4 +5,12 @@ class Main extends CI_Controller
 	{
 		$this->load->view('landing/home');
 	}
+	public function accountCreation()
+	{
+		$reply = $this->main_model->createAccount();
+
+		echo json_encode(
+			$reply
+		);
+	}
 }

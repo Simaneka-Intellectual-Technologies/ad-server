@@ -18,7 +18,8 @@ if ($_SERVER['DOCUMENT_ROOT'] == 'C:/xampp/htdocs') {
     define('SPACE', $_SERVER['DOCUMENT_ROOT'] . '/assets/admin/uploads/');
 }
 
-define('APP_NAME', 'Ticket Management System By Simaneka Intellectual Technologies');
+define('APP_NAME', 'Ad Server By Simaneka Intellectual Technologies');
+define('SHORT_APP_NAME', 'Ad Server');
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
