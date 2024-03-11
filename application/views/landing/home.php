@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>AD Server</title>
+    <title>Ad Server</title>
     <link rel="icon" href="<?= base_url('assets/landing/img/logos/favicon.png')?>">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/landing/css/bootstrap.min.css')?>">
@@ -24,6 +24,57 @@
     <link rel="stylesheet" href="<?= base_url('assets/landing/css/slick.css')?>">
     <!-- style CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/landing/css/style.css')?>">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="<?= SHORT_APP_NAME ?>" />
+    <meta name="ROBOTS" content="index,follow" />
+    <meta name="language" content="en" />
+    <meta name="copyright" content="<?= SHORT_APP_NAME ?>" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="description" content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
+    <meta name="keywords" content="AD, Advertisement, Server, Network, Publishers, Ads, Adverts, connections, linking, images, videos, namibia, simaneka, intellectual, technologies, system, windhoel, africa" />
+    <meta property="fb:app_id" content />
+    <meta property="og:title" content="<?= SHORT_APP_NAME ?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
+    <meta property="og:url" content="<?= base_url() ?>/" />
+    <meta property="og:site_name" content="<?= SHORT_APP_NAME ?> " />
+    <meta property="og:image" content="<?= base_url('assets/landing/img/logos/logo_7.png') ?>" />
+    <meta name="DC.title" content="<?= SHORT_APP_NAME ?>" />
+    <meta name="DC.description" lang="en" content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
+    <meta name="DC.date" content="<?= date('Y-m-d') ?>" />
+    <meta name="DC.date.issued" content="<?= date('Y-m-d') ?>" />
+    <meta name="DC.creator" content="<?= SHORT_APP_NAME ?>" />
+    <meta name="DC.publisher" content="<?= SHORT_APP_NAME ?>" />
+    <meta name="DC.language" content="de" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
+    <meta name="twitter:title" content="<?= SHORT_APP_NAME ?>" />
+    <meta name="twitter:site" content="@SimanekaIT" />
+    <meta name="twitter:image" content="<?= base_url('assets/landing/img/logos/logo_7.png') ?>" />
+    <link href="<?= base_url() ?>/" rel="canonical">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org/",
+    "headline": "<?= SHORT_APP_NAME ?>",
+    "description": "Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!",
+    "keywords": "AD, Advertisement, Server, Network, Publishers, Ads, Adverts, connections, linking, images, videos, namibia, simaneka, intellectual, technologies, system, windhoel, africa",
+    "@type": "WebPage",
+    "author":
+
+    { "@type": "Organization", "url": "<?= SHORT_APP_NAME ?>" }
+    ,
+    "publisher": {
+    "@type": "Organization",
+    "name": "<?= SHORT_APP_NAME ?>",
+    "url": "<?= base_url() ?>",
+    "sameAs": [""],
+    "logo":
+
+    { "@type": "ImageObject", "url": "<?= base_url('assets/landing/img/logo_7.png') ?>", "width": "500", "height": "500" }
+    }
+    }
+    </script>
 </head>
 
 <body>
@@ -412,7 +463,7 @@
                 <div class="col-sm-8 col-md-4 col-lg-4">
                     <div class="single_footer_part">
                         <a href="#home" class="footer_logo_iner"> <img src="<?= base_url('assets/landing/img/logos/footer_logo.png')?>" alt="#"> </a>
-                        <p>AD Server, where every click unlocks a world of endless possibilities! Dive into our vibrant community of creativity and innovation, where inspiration meets action. Explore curated content, connect with like-minded individuals, and embark on a journey of discovery unlike any other. Your adventure starts here!
+                        <p>Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!
                         </p>
                     </div>
                 </div>
