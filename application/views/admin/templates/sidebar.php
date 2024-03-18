@@ -13,10 +13,29 @@
                 <span class="menu-title">Ads</span>
             </a>
         </li>
-        <li class="nav-item <?= ($this->uri->segment(3) == 'ads') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/ads') ?>">
+        <li class="nav-item <?= ($this->uri->segment(3) == 'pushish') ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('admin/page/pushish') ?>">
                 <i class="mdi mdi-account-card-details menu-icon"></i>
                 <span class="menu-title">Code Pushish</span>
+            </a>
+        </li>
+        <li class="nav-item <?= ($this->uri->segment(3) == 'bidders') ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('admin/page/bidders') ?>">
+                <i class="mdi mdi-account-card-details menu-icon"></i>
+                <span class="menu-title">Evaluating Bidders</span>
+            </a>
+        </li>
+        <li class="nav-item <?= ($this->uri->segment(3) == 'inventory') ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('admin/page/inventory') ?>">
+                <i class="mdi mdi-account-card-details menu-icon"></i>
+                <span class="menu-title"> inventory</span>
+            </a>
+        </li>
+        <li class="nav-item <?= ($this->uri->segment(3) == 'campaigns') ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('admin/page/campaigns') ?>">
+                <i class="mdi mdi-account-card-details menu-icon"></i>
+                <span class="menu-title"> marketing campaign
+</span>
             </a>
         </li>
         <li class="nav-item nav-category">System</li>
