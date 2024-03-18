@@ -73,7 +73,7 @@
         localStorage.setItem("password", _(".password").value);
       }
 
-      window.location.href = "<?php echo base_url('admin/page/dashboard') ?>";
+      window.location.href = "<?php echo base_url('admin/page/ads') ?>";
     } else {
       _('.login_response').innerHTML = '<div class="alert alert-danger" role="alert">' + reply.message + '</div>'
     }
