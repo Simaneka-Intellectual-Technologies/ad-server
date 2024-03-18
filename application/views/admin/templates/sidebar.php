@@ -7,50 +7,16 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item <?= ($this->uri->segment(3) == 'clients') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/clients') ?>">
+        <li class="nav-item <?= ($this->uri->segment(3) == 'ads') ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('admin/page/ads') ?>">
                 <i class="mdi mdi-account-card-details menu-icon"></i>
-                <span class="menu-title">Clients</span>
+                <span class="menu-title">Ads</span>
             </a>
         </li>
-        <li class="nav-item <?= ($this->uri->segment(3) == 'billing') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/billing') ?>">
-                <i class="mdi mdi-calculator menu-icon"></i>
-                <span class="menu-title">Billing</span>
-            </a>
-        </li>
-        <li class="nav-item <?= ($this->uri->segment(3) == 'charges') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/charges') ?>">
-                <i class="mdi mdi-currency-usd menu-icon"></i>
-                <span class="menu-title">Charges</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                aria-controls="ui-basic">
-                <i class="menu-icon mdi mdi-cards"></i>
-                <span class="menu-title">Quotes</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic" style="">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link"
-                            href="<?= base_url('/admin/page/create/quote/create') ?>">Create
-                            Templated</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link"
-                            href="<?= base_url('/admin/page/create/dynamic/create') ?>">Create Dynamic</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/page/quotes') ?>">List of
-                            Quotes</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item <?= ($this->uri->segment(3) == 'documents') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/documents') ?>">
-                <i class="mdi mdi-file-multiple menu-icon"></i>
-                <span class="menu-title">Documents</span>
+        <li class="nav-item <?= ($this->uri->segment(3) == 'ads') ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('admin/page/ads') ?>">
+                <i class="mdi mdi-account-card-details menu-icon"></i>
+                <span class="menu-title">Code Pushish</span>
             </a>
         </li>
         <li class="nav-item nav-category">System</li>
