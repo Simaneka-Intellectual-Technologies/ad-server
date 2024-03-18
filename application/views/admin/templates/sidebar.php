@@ -13,6 +13,7 @@
                 <span class="menu-title">Ads</span>
             </a>
         </li>
+        
         <li class="nav-item <?= ($this->uri->segment(3) == 'pushish') ? 'active' : '' ?>">
             <a class="nav-link" href="<?= base_url('admin/page/pushish') ?>">
                 <i class="mdi mdi-account-card-details menu-icon"></i>
