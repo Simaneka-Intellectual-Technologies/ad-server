@@ -5,10 +5,8 @@
         <div class="col-lg-4 mx-auto">
           <div class="auth-form-light text-left py-5 px-4 px-sm-5">
             <div class="brand-logo" style="display: flex; justify-content:center">
-              <img style="width:180px !important" src="<?= base_url('assets/admin/images/logos/logo_2.png') ?>" alt="logo">
+              <img style="width:180px !important" src="<?= base_url('/assets/landing/img/logos/logo_26.png') ?>" alt="logo">
             </div>
-            <h4>Hello! let's get started</h4>
-            <h6 class="fw-light">Sign in to continue.</h6>
             <form class="pt-3">
               <div class="form-group">
                 <input type="email" class="form-control form-control-lg email" id="exampleInputEmail1" placeholder="Username">
@@ -19,7 +17,7 @@
 
               <div class="login_response"></div>
               <div class="mt-3">
-                <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="#">SIGN IN</a>
+                <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn w-100" href="#">SIGN IN</a>
               </div>
               <div class="my-2 d-flex justify-content-between align-items-center">
                 <div class="form-check">

@@ -139,6 +139,8 @@ class Admin extends CI_Controller
 				
 			} elseif ($page == 'companies') {
 				$data['company'] = $this->admin_model->get_where($page, null, true, null)[0];
+			} elseif ($page == 'bidders') {
+				// $data['company'] = $this->admin_model->get_where($page, null, true, null)[0];
 			} else {
 				// $sort = array(
 				// 	'col' => 'created_on',
@@ -214,16 +216,24 @@ class Admin extends CI_Controller
 
 				redirect(base_url('admin/login'));
 			} elseif ($type == 'create') {
-				if ($slug == 'client') {
+				if ($slug == 'ad') {
 
-					if ($this->input->post('client_id')) {
+					if ($this->input->post('ad_id')) {
+
+						$data = array();
+                    	foreach ($_POST as $key => $value) {
+
+
+                    	    if ($key != substr($slug, 0, -1) . '_image') {
+                    	        if ($key != 'password' || $this->input->post('password') != 'Do Not Change to Keep Password The Same') {
+                    	            $data[$key] = ($key == 'password') ? md5($value) : $value;
+                    	        }
+                    	    }
+                    	}
+
+						die();
 						$data = array(
-							'client_name' => $this->input->post('client_name'),
-							'comp_id' => $this->session->userdata('comp_id'),
-							'client_email' => $this->input->post('client_email'),
-							'client_cell' => $this->input->post('client_cell'),
-							'client_contactPerson' => $this->input->post('client_contactPerson'),
-							'client_status' => $this->input->post('client_status')
+							'comp_id' => $this->session->userdata('comp_id')
 						);
 						if ($this->input->post('viewPassword') != "Edit To Password") {
 							$data = array(
@@ -264,15 +274,15 @@ class Admin extends CI_Controller
 							redirect(base_url('admin/page/clients'));
 						}
 					} else {
-						$data = array(
-							'client_name' => $this->input->post('client_name'),
-							'comp_id' => $this->session->userdata('comp_id'),
-							'client_email' => $this->input->post('client_email'),
-							'client_cell' => $this->input->post('client_cell'),
-							'client_contactPerson' => $this->input->post('client_contactPerson'),
-							'client_status' => $this->input->post('client_status'),
-							'viewPassword' => $this->input->post('viewPassword'),
-						);
+						$data = array();
+                    	foreach ($_POST as $key => $value) {
+                    	    if ($key != substr($slug, 0, -1) . '_image') {
+                    	        $data[$key] = ($key == 'password') ? md5($value) : $value;
+                    	    }
+                    	}
+
+						print_r($data);
+						die();
 
 						if ($this->admin_model->insert('clients', $data)) {
 							redirect(base_url('admin/page/clients'));

@@ -145,6 +145,7 @@ class Main_model extends CI_Model
 				);
         }
 	}
+	
 	public function buildMailBody($email, $link, $password, $companyCode, $name, $message)
 	{
 		return 'Hi, '. $name .' <br>'

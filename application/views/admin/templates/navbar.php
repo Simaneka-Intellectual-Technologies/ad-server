@@ -7,10 +7,10 @@
         </div>
         <div>
             <a class="navbar-brand brand-logo" href="index.html">
-                <img src="<?= base_url('assets/admin/') ?>images/logo.png" alt="logo" />
+                <img src="<?= base_url('/assets/landing/img/logos/footer_logo.png') ?>" alt="logo" />
             </a>
             <a class="navbar-brand brand-logo-mini" href="index.html">
-                <img src="<?= base_url('assets/admin/') ?>images/logo-mini.png" alt="logo" />
+                <img src="<?= base_url('/assets/landing/img/logos/footer_logo.png') ?>" alt="logo" />
             </a>
         </div>
     </div>
