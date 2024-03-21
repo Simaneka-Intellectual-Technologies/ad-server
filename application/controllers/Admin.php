@@ -135,12 +135,8 @@ class Admin extends CI_Controller
 				);
 				$data['subscription'] = $this->admin_model->get_where($page, $where, true, $sort);
 				$data['packages'] = $this->admin_model->get_where('packages', null, false, null);
-			} elseif ($page == 'quotes') {
-				$sort = array(
-					'col' => 'quoted_on_date',
-					'by' => 'DESC'
-				);
-				$data[$page] = $this->admin_model->get_where($page, null, true, $sort);
+			} elseif ($page == 'publish') {
+				
 			} elseif ($page == 'companies') {
 				$data['company'] = $this->admin_model->get_where($page, null, true, null)[0];
 			} else {

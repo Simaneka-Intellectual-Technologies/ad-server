@@ -12,14 +12,14 @@ class Admin_model extends CI_Model
 		$this->db->order_by('update_date', "DESC");
 		return $this->db->get()->row_array();
 	}
-	public function get_select_options($table, $id, $column)
+	public function get_select_options($table, $column, $value, $id)
 	{
 		$this->db->from($table);
 		$this->db->order_by($column, "DESC");
 		$query = $this->db->get();
 		if ($query->result()) {
 			foreach ($query->result_array() as $row) {
-				echo '<option ' . (($id == $row[$column]) ? 'select' : '') . ' value="' . $row[$column] . '">' . $row[$column] . '</option>';
+				echo '<option ' . (($id == $row[$column]) ? 'select' : '') . ' value="' . $row[$value] . '">' . $row[$column] . '</option>';
 			}
 		}
 	}
