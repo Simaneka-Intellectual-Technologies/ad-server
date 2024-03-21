@@ -78,19 +78,19 @@ $password = '';
 $user = '';
 
 
-if ($_SERVER['DOCUMENT_ROOT'] == 'C:/xampp/htdocs') {
-	$database = 'ads';
-	$password = '';
-	$user = 'root';
-} else {
+// if ($_SERVER['DOCUMENT_ROOT'] == 'C:/xampp/htdocs') {
+// 	$database = 'ads';
+// 	$password = '';
+// 	$user = 'root';
+// } else {
 	$database = 'u532240888_ads';
 	$password = '2$bQudu2!8u1';
 	$user = 'u532240888_advertiser';
-}
+// }
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '154.56.38.48',
 	'username' => $user,
 	'password' => $password,
 	'database' => $database,
