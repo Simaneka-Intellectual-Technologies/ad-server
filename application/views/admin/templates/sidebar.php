@@ -14,10 +14,10 @@
             </a>
         </li>
         
-        <li class="nav-item <?= ($this->uri->segment(3) == 'pushish') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/pushish') ?>">
+        <li class="nav-item <?= ($this->uri->segment(3) == 'publish') ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('admin/page/publish') ?>">
                 <i class="mdi mdi-account-card-details menu-icon"></i>
-                <span class="menu-title">Code Pushish</span>
+                <span class="menu-title">Code Publish</span>
             </a>
         </li>
         <li class="nav-item <?= ($this->uri->segment(3) == 'bidders') ? 'active' : '' ?>">
