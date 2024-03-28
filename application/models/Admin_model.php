@@ -65,6 +65,13 @@ class Admin_model extends CI_Model
 		$query = $this->db->get_where($table, $where);
 		return $query->result_array();
 	}
+	public function get_user($table, $where)
+	{
+		$this->db->select('admin.user_id, admin.comp_id, admin.email, admin.name, admin.last_login, admin.type, admin.image, companies.title');
+		$this->db->join('companies', 'admin.comp_id = companies.comp_id');
+		$query = $this->db->get_where($table, $where);
+		return $query->row_array();
+	}
 	public function insert($table, $data)
 	{
 		if ($this->db->insert($table, $data)) {
