@@ -221,6 +221,9 @@ class Admin extends CI_Controller
 					$type = $this->admin_model->get_type($this->input->post('type'));
 
 					$path = SPACE . str_replace(' ', '_',  strtolower($type['name'])) . '/';
+
+					echo $path;
+					die();
 					$config['allowed_types'] = 'gif|jpg|png|jpeg|word|pdf';
 					$config['max_size'] = 2048;
 					$config['max_width'] = 2000;
