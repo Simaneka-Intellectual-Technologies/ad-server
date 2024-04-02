@@ -5,6 +5,13 @@ class Admin_model extends CI_Model
 	{
 		$this->load->database();
 	}
+	public function get_type($id)
+	{
+		$this->db->limit(1);
+		$this->db->from('types');
+		$this->db->where('type_id', $id);
+		return $this->db->get()->row_array();
+	}
 	public function get_version()
 	{
 		$this->db->limit(1);
