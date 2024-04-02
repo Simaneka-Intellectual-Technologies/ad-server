@@ -225,6 +225,8 @@ class Admin extends CI_Controller
 					$config['max_height'] = 2000;
 					$config['upload_path'] = $path;
 
+					echo $path;
+					die();
 					$this->load->library('upload', $config);
 					if (!$this->upload->do_upload('file')) {
 						print_r(array('error' => $this->upload->display_errors()));
