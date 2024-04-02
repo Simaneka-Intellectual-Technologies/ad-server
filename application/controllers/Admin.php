@@ -219,6 +219,9 @@ class Admin extends CI_Controller
 
 				if ($_FILES['file']['name'] != '') {
 					$type = $this->admin_model->get_type($this->input->post('type'));
+
+					print_r($type);
+					die();
 					// $path = SPACE . '/' . str_replace(' ', '_', strtolower($this->input->post('type')));
 					$path = SPACE . str_replace(' ', '_',  strtolower($type['title'])) . '/';
 					$config['allowed_types'] = 'gif|jpg|png|jpeg|word|pdf';
