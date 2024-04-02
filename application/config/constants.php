@@ -15,7 +15,7 @@ defined('SHOW_DEBUG_BACKTRACE') or define('SHOW_DEBUG_BACKTRACE', TRUE);
 if ($_SERVER['DOCUMENT_ROOT'] == 'C:/xampp/htdocs') {
     define('SPACE', $_SERVER['DOCUMENT_ROOT'] . str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']) .'/assets/admin/uploads/');
 } else {
-    define('SPACE', $_SERVER['DOCUMENT_ROOT'] . '/assets/admin/uploads/');
+    define('SPACE', $_SERVER['DOCUMENT_ROOT'] . '/assets/ads/');
 }
 
 define('APP_NAME', 'Ad Server By Simaneka Intellectual Technologies');
