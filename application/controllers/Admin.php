@@ -216,6 +216,28 @@ class Admin extends CI_Controller
 
 				redirect(base_url('admin/login'));
 			} elseif ($type == 'create') {
+
+				if ($_FILES['file']['name'] != '') {
+					$path = SPACE . '/' . str_replace(' ', '_', strtolower($this->input->post('type')));
+					$config['allowed_types'] = 'gif|jpg|png|jpeg|word|pdf';
+					$config['max_size'] = 2048;
+					$config['max_width'] = 2000;
+					$config['max_height'] = 2000;
+					$config['upload_path'] = $path;
+
+					$this->load->library('upload', $config);
+					if (!$this->upload->do_upload('file')) {
+						print_r(array('error' => $this->upload->display_errors()));
+						die();
+					} else {
+						$upload = array('upload_data' => $this->upload->data())['upload_data'];
+
+						$image = str_replace(' ', '', strtolower($this->input->post('title'))) . $upload['file_ext'];
+						rename($path .  $upload['file_name'], $path . $image);
+						$data['file'] = base_url('/assets/ads/'. str_replace(' ', '_', strtolower($this->input->post('type'))) . '/' . $image);
+					}
+				}
+				
 				if ($slug == 'ad') {
 
 					if ($this->input->post('ad_id')) {
@@ -280,6 +302,9 @@ class Admin extends CI_Controller
 			                    	        $data[$key] = ($key == 'password') ? md5($value) : $value;
 			                    	    }
 			                    	}
+
+						
+						print_r($_POST);
 						print_r($_FILES);
 						die();
 						$slug .= 's';
