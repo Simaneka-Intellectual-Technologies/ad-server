@@ -243,75 +243,28 @@ class Admin extends CI_Controller
 				
 				if ($slug == 'ad') {
 
-					if ($this->input->post('ad_id')) {
-
-						$data = array();
-                    	foreach ($_POST as $key => $value) {
-
-
-                    	    if ($key != substr($slug, 0, -1) . '_image') {
-                    	        if ($key != 'password' || $this->input->post('password') != 'Do Not Change to Keep Password The Same') {
-                    	            $data[$key] = ($key == 'password') ? md5($value) : $value;
-                    	        }
-                    	    }
-                    	}
-
-						die();
-						$data = array(
-							'comp_id' => $this->session->userdata('comp_id')
-						);
-						if ($this->input->post('viewPassword') != "Edit To Password") {
-							$data = array(
-								'viewPassword' => md5($this->input->post('viewPassword'))
-							);
-						}
-
-
-						if ($_FILES['client_logo']['name'] != '') {
-							$config['allowed_types'] = 'gif|jpg|png|jpeg|word|pdf';
-							$config['max_size'] = 2048;
-							$config['max_width'] = 2000;
-							$config['max_height'] = 2000;
-							$config['upload_path'] = SPACE . 'images/client_logos/';
-
-
-							$this->load->library('upload', $config);
-
-							if (!$this->upload->do_upload('client_logo')) {
-								print_r(array('error' => $this->upload->display_errors()));
-								die();
-							} else {
-								$upload = array('upload_data' => $this->upload->data())['upload_data'];
-
-								$image = str_replace(' ', '', strtolower($this->input->post('client_name'))) . $upload['file_ext'];
-								rename(SPACE . 'images/client_logos/' . $upload['file_name'], SPACE . 'images/client_logos/' . $image);
-
-								$data['client_logo'] = '/ads/uploads/images/client_logos/' . $image;
-							}
-						}
-
-
-						$where = array(
-							'client_id' => $this->input->post('client_id')
-						);
-
-						if ($this->admin_model->update('clients', $where, $data)) {
-							redirect(base_url('admin/page/clients'));
-						}
-					} else {
-			                    	foreach ($_POST as $key => $value) {
-			                    	    if ($key != substr($slug, 0, -1) . '_image') {
-			                    	        $data[$key] = ($key == 'password') ? md5($value) : $value;
-			                    	    }
-			                    	}
-
+		                    	foreach ($_POST as $key => $value) {
+		                    	    if ($key != substr($slug, 0, -1) . '_image') {
+			            	        $data[$key] = ($key == 'password') ? md5($value) : $value;
+			        	    }
+			                }
+					
+					$data['comp_id'] = $this->session->userdata('comp_id');
+					$slug .= 's';
+					
+					// if ($this->input->post('ad_id')) {
 						
-						$data['comp_id'] = $this->session->userdata('comp_id');
-						$slug .= 's';
-						if ($this->admin_model->insert($slug, $data)) {
-							redirect(base_url('admin/page/'. $slug));
-						}
-					}
+						$where = array(
+							'ad_id' => $this->input->post('ad_id')
+						);
+
+						$this->admin_model->update($slug, $where, $data);
+					// } else {
+
+						// $this->admin_model->insert($slug, $data));
+					// }
+
+					redirect(base_url('admin/page/'. $slug));
 				} elseif ($slug == 'billing') {
 					if ($this->input->post('billing_id')) {
 						$client = explode('|', $this->input->post('billing_client'));
