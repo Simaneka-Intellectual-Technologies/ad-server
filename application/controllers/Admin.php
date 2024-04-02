@@ -550,27 +550,13 @@ class Admin extends CI_Controller
 
 					$this->admin_model->delete('clients', $where, true);
 					redirect(base_url('admin/page/dashboard'));
-				} elseif ($slug == 'document') {
+				} elseif ($slug == 'ad') {
 					$where = array(
-						'document_id' => $id
+						'ad_id' => $id
 					);
 
-					$doc = $this->admin_model->get_where('documents', $where, true, null)[0];
-					$space = '';
-					if ($_SERVER['DOCUMENT_ROOT'] == 'C:/xampp/htdocs') {
-						$space = $_SERVER['DOCUMENT_ROOT'] . '/client-management-system/';
-					} else {
-						$space = $_SERVER['DOCUMENT_ROOT'] . '/';
-					}
-
-					if ($doc['slug'] != '') {
-						if (file_exists($space . $doc['slug'])) {
-							unlink($space . $doc['slug']);
-						}
-					}
-
-					$this->admin_model->delete('documents', $where, true);
-					redirect(base_url('admin/page/documents'));
+					$this->admin_model->delete('ads', $where, true);
+					redirect(base_url('admin/page/ads'));
 				}
 				if ($slug == 'quote') {
 					$where = array(
