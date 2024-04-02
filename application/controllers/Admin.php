@@ -235,7 +235,7 @@ class Admin extends CI_Controller
 
 						$image = str_replace(' ', '', strtolower($this->input->post('title'))) . date('Y_M_D_H_i_s') . $upload['file_ext'];
 						rename($path .  $upload['file_name'], $path . $image);
-						$data['file'] = 'ads/'. str_replace(' ', '_', strtolower($this->input->post('type'))) . '/' . $image);
+						$data['file'] = 'ads/'. str_replace(' ', '_', strtolower($this->input->post('type'))) . '/' . $image;
 					}
 				}
 				
