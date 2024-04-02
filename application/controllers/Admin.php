@@ -252,17 +252,16 @@ class Admin extends CI_Controller
 					$data['comp_id'] = $this->session->userdata('comp_id');
 					$slug .= 's';
 					
-					// if ($this->input->post('ad_id')) {
+					if ($this->input->post('ad_id')) {
 						
 						$where = array(
 							'ad_id' => $this->input->post('ad_id')
 						);
 
 						$this->admin_model->update($slug, $where, $data);
-					// } else {
-
-						// $this->admin_model->insert($slug, $data));
-					// }
+					} else {
+						$this->admin_model->insert($slug, $data);
+					}
 
 					redirect(base_url('admin/page/'. $slug));
 				} elseif ($slug == 'billing') {
