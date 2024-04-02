@@ -233,7 +233,7 @@ class Admin extends CI_Controller
 					} else {
 						$upload = array('upload_data' => $this->upload->data())['upload_data'];
 
-						$image = str_replace(' ', '', strtolower($this->input->post('title'))) . $upload['file_ext'];
+						$image = str_replace(' ', '', strtolower($this->input->post('title'))) . date('Y_M_D_H_i_s') . $upload['file_ext'];
 						rename($path .  $upload['file_name'], $path . $image);
 						$data['file'] = base_url('/assets/ads/'. str_replace(' ', '_', strtolower($this->input->post('type'))) . '/' . $image);
 					}
@@ -305,8 +305,7 @@ class Admin extends CI_Controller
 			                    	}
 
 						
-						print_r($_POST);
-						print_r($_FILES);
+						print_r($data);
 						die();
 						$slug .= 's';
 						if ($this->admin_model->insert($slug, $data)) {
