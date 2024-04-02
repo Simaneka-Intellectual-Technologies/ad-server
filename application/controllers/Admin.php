@@ -88,11 +88,11 @@ class Admin extends CI_Controller
 				);
 				$data['charge'] = $this->admin_model->get_where($type, $where, true, NULL)[0];
 			} elseif ($page == 'create') {
-				if ($type == 'client' && is_numeric($slug)) {
+				if ($type == 'ad' && is_numeric($slug)) {
 					$where = array(
-						'client_id' => $slug
+						'ad_id' => $slug
 					);
-					$data['client'] = $this->admin_model->get_where('clients', $where, true, null)[0];
+					$data['ad'] = $this->admin_model->get_where('ads', $where, true, null)[0];
 				}
 				if ($type == "billing") {
 					$where = array(
