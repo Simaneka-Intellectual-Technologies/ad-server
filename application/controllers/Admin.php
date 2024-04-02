@@ -235,7 +235,7 @@ class Admin extends CI_Controller
 
 						$image = str_replace(' ', '', strtolower($this->input->post('title'))) . date('Y_M_D_H_i_s') . $upload['file_ext'];
 						rename($path .  $upload['file_name'], $path . $image);
-						$data['file'] = base_url('/assets/ads/'. str_replace(' ', '_', strtolower($this->input->post('type'))) . '/' . $image);
+						$data['file'] = 'ads/'. str_replace(' ', '_', strtolower($this->input->post('type'))) . '/' . $image);
 					}
 				}
 				
@@ -284,7 +284,7 @@ class Admin extends CI_Controller
 								$image = str_replace(' ', '', strtolower($this->input->post('client_name'))) . $upload['file_ext'];
 								rename(SPACE . 'images/client_logos/' . $upload['file_name'], SPACE . 'images/client_logos/' . $image);
 
-								$data['client_logo'] = base_url('/assets/admin/uploads/images/client_logos/' . $image);
+								$data['client_logo'] = '/ads/uploads/images/client_logos/' . $image);
 							}
 						}
 
@@ -297,7 +297,6 @@ class Admin extends CI_Controller
 							redirect(base_url('admin/page/clients'));
 						}
 					} else {
-						$data = array();
 			                    	foreach ($_POST as $key => $value) {
 			                    	    if ($key != substr($slug, 0, -1) . '_image') {
 			                    	        $data[$key] = ($key == 'password') ? md5($value) : $value;
@@ -305,8 +304,6 @@ class Admin extends CI_Controller
 			                    	}
 
 						
-						print_r($data);
-						die();
 						$slug .= 's';
 						if ($this->admin_model->insert($slug, $data)) {
 							redirect(base_url('admin/page/'. $slug));
