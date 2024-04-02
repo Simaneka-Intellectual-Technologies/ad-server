@@ -275,17 +275,16 @@ class Admin extends CI_Controller
 						}
 					} else {
 						$data = array();
-                    	foreach ($_POST as $key => $value) {
-                    	    if ($key != substr($slug, 0, -1) . '_image') {
-                    	        $data[$key] = ($key == 'password') ? md5($value) : $value;
-                    	    }
-                    	}
-
-						print_r($data);
+			                    	foreach ($_POST as $key => $value) {
+			                    	    if ($key != substr($slug, 0, -1) . '_image') {
+			                    	        $data[$key] = ($key == 'password') ? md5($value) : $value;
+			                    	    }
+			                    	}
+						print_r($_FILES);
 						die();
-
-						if ($this->admin_model->insert('clients', $data)) {
-							redirect(base_url('admin/page/clients'));
+						$slug .= 's';
+						if ($this->admin_model->insert($slug, $data)) {
+							redirect(base_url('admin/page/'. $slug));
 						}
 					}
 				} elseif ($slug == 'billing') {
