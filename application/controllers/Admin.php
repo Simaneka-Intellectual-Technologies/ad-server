@@ -218,15 +218,14 @@ class Admin extends CI_Controller
 			} elseif ($type == 'create') {
 
 				if ($_FILES['file']['name'] != '') {
-					$path = SPACE . '/' . str_replace(' ', '_', strtolower($this->input->post('type')));
+					// $path = SPACE . '/' . str_replace(' ', '_', strtolower($this->input->post('type')));
+					$path = SPACE;
 					$config['allowed_types'] = 'gif|jpg|png|jpeg|word|pdf';
 					$config['max_size'] = 2048;
 					$config['max_width'] = 2000;
 					$config['max_height'] = 2000;
 					$config['upload_path'] = $path;
 
-					echo $path;
-					die();
 					$this->load->library('upload', $config);
 					if (!$this->upload->do_upload('file')) {
 						print_r(array('error' => $this->upload->display_errors()));
