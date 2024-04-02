@@ -220,7 +220,7 @@ class Admin extends CI_Controller
 				if ($_FILES['file']['name'] != '') {
 					$type = $this->admin_model->get_type($this->input->post('type'));
 					// $path = SPACE . '/' . str_replace(' ', '_', strtolower($this->input->post('type')));
-					$path = SPACE . str_replace(' ', '_',  strtolower($type['title']))) . '/';
+					$path = SPACE . str_replace(' ', '_',  strtolower($type['title'])) . '/';
 					$config['allowed_types'] = 'gif|jpg|png|jpeg|word|pdf';
 					$config['max_size'] = 2048;
 					$config['max_width'] = 2000;
@@ -236,7 +236,7 @@ class Admin extends CI_Controller
 
 						$image = str_replace(' ', '', strtolower($this->input->post('title'))) . date('Y_M_D_H_i_s') . $upload['file_ext'];
 						rename($path .  $upload['file_name'], $path . $image);
-						$data['file'] = 'ads/'. str_replace(' ', '_',  strtolower($type['title']))) . '/' . $image;
+						$data['file'] = 'ads/'. str_replace(' ', '_',  strtolower($type['title'])) . '/' . $image;
 					}
 				}
 				
