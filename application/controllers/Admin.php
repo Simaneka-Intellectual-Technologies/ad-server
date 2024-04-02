@@ -284,7 +284,7 @@ class Admin extends CI_Controller
 								$image = str_replace(' ', '', strtolower($this->input->post('client_name'))) . $upload['file_ext'];
 								rename(SPACE . 'images/client_logos/' . $upload['file_name'], SPACE . 'images/client_logos/' . $image);
 
-								$data['client_logo'] = '/ads/uploads/images/client_logos/' . $image);
+								$data['client_logo'] = '/ads/uploads/images/client_logos/' . $image;
 							}
 						}
 
