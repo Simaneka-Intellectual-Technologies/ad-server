@@ -71,11 +71,11 @@
                 <div class="mt-3">
                     <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                         <div class="d-flex">
-                            <img class="img-sm rounded-10" src="<?= isset($ad['file']) ? base_url('assets/ads/'. $ad['file']) : base_url('/assets/landing/img/logos/logo_23.png') ?>" alt="profile">
+                            <img class="img-sm rounded-10" src="<?= isset($ad['file']) ? base_url('assets/'. $ad['file']) : base_url('/assets/ads/default_ad.jpg') ?>" alt="<?= isset($ad['title']) ? $ad['title'] : '' ?> Advertisement">
                             <div class="wrapper ms-3">
-                                <p class="ms-1 mb-1 fw-bold"><?= isset($ad['file']) ? $ad['title'] : '' ?> Logo</p>
+                                <p class="ms-1 mb-1 fw-bold"><?= isset($ad['file']) ? $ad['title'] : '' ?> Advertisment</p>
                                 <input type="file" name="file" class="file-upload-default">
-                                <small class="text-muted mb-0"><?= isset($ad['file']) ? base_url('assets/ads/'. $ad['file']) : base_url('/assets/landing/img/logos/logo_23.png') ?></small>
+                                <small class="text-muted mb-0"><?= isset($ad['file']) ? base_url('assets/'. $ad['file']) : base_url('/assets/ads/default_ad.jpg') ?></small>
                             </div>
                         </div>
                         <div class="text-muted text-small">

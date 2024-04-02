@@ -5,6 +5,13 @@ class Admin_model extends CI_Model
 	{
 		$this->load->database();
 	}
+	public function get_type($id)
+	{
+		$this->db->limit(1);
+		$this->db->from('types');
+		$this->db->where('type_id', $id);
+		return $this->db->get()->row_array();
+	}
 	public function get_version()
 	{
 		$this->db->limit(1);
@@ -64,6 +71,13 @@ class Admin_model extends CI_Model
 		}
 		$query = $this->db->get_where($table, $where);
 		return $query->result_array();
+	}
+	public function get_user($table, $where)
+	{
+		$this->db->select('admin.user_id, admin.comp_id, admin.email, admin.name, admin.surname, admin.last_login, admin.type, admin.image, companies.title AS company');
+		$this->db->join('companies', 'admin.comp_id = companies.comp_id');
+		$query = $this->db->get_where($table, $where);
+		return $query->row_array();
 	}
 	public function insert($table, $data)
 	{
