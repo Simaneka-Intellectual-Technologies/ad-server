@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/admin/vendors/typicons/typicons.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/admin/vendors/simple-line-icons/css/simple-line-icons.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/admin/vendors/css/vendor.bundle.base.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/admin/vendors/prism/prism.css') ?>">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="<?= base_url('assets/admin/js/select.dataTables.min.css') ?>">
