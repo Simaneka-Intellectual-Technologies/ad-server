@@ -30,6 +30,7 @@
   <script src="<?= base_url('assets/admin/js/file-upload.js') ?>"></script>
   <script src="<?= base_url('assets/admin/js/typeahead.js') ?>"></script>
   <script src="<?= base_url('assets/admin/js/select2.js') ?>"></script>
+  <script src="<?= base_url('assets/admin/vendors/prism/prism.js') ?>"></script>
   <!-- End custom js for this page-->
   <!-- End custom js for this page-->
   </body>

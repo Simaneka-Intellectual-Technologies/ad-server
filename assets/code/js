@@ -1,0 +1,19 @@
+var myHeaders = new Headers();
+    myHeaders.append("authorisation", "bjDw4NtKucrnQheVzP6aYAygEvfR28dB");
+    myHeaders.append("Cookie", "ci_session=ff2aa0663b882aa133094fe64ad6296ed8cb1c47");
+    var reply = null
+
+    var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
+
+    fetch("https://ad.simaneka.com/api/get?type=Vertical Strip", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+    reply = JSON.parse(result);
+    document.querySelector('.advertisment').src = reply.link;
+    document.querySelector('.redirect').href = reply.redirect_link;
+    })
+    .catch(error => console.log('error', error));
