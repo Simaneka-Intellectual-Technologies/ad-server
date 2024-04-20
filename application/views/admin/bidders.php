@@ -10,22 +10,22 @@
                             <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Export</a>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class="tab-content tab-content-basic">
 
-                    <div class="row flex-grow">
+                    <div class="row flex-grow"> 
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card card-rounded">
                                 <div class="card-body">
                                     <div class="d-sm-flex justify-content-between align-items-start">
-                                        <div>
+                                        <div> 
                                             <h4 class="card-title card-title-dash">Advertisments</h4>
                                             <p class="card-subtitle card-subtitle-dash">Here is a list of the ads</p>
                                         </div>
-                                        <div>
+                                        <div> 
                                             <a href="<?= base_url('admin/page/create/ad/create') ?>" class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Add Advertisment</a>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div class="card-body">
 
@@ -33,10 +33,10 @@
                                         <table class="table select-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Ad</th>
+                                                    <th>Ad</th> 
                                                     <th>Status</th>
                                                     <th>Start Date</th>
-                                                    <th>Duration</th>
+                                                    <th>Duration</th> 
                                                     <th>Edit</th>
                                                     <th>Delete</th>
                                                 </tr>
@@ -45,7 +45,7 @@
                                                 <?php foreach ($ads as $ad) : ?>
                                                     <tr>
                                                         <td>
-                                                            <div class="d-flex ">
+                                                            <div class="d-flex "> 
                                                                 <img src="<?= ($ad['file'] != '') ? base_url('assets/'. $ad['file']) : base_url('/assets/landing/img/logos/logo_23.png') ?>" alt="<?= $ad['title'] . 'Logo' ?>">
                                                                 <div>
                                                                     <h6><?= $ad['title'] ?></h6>

@@ -36,35 +36,35 @@
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody>  
                                                 <?php foreach ($admin as $user) : ?>
                                                     <tr>
-                                                        <td>
+                                                        <td>  
                                                             <div class="d-flex ">
                                                                 <img src="<?= ($this->session->userdata('image') != '') ? $this->session->userdata('image') : base_url('/assets/admin/uploads/images/users/user.png') ?> ?>" alt="">
-                                                                <div>
+                                                                <div>  
                                                                     <h6><a href="<?= base_url('admin/page/create/user/' . $user['user_id']) ?>"><?= $user['name'] . ' ' . $user['surname'] ?></a> </h6>
                                                                     <p><?= ($user['type'] == 1) ? 'Admin' : 'Viewer' ?></p>
                                                                 </div>
-                                                            </div>
+                                                            </div> 
                                                         </td>
                                                         <td>
                                                             <h6><a class="text-decoration-none" href="mailto:<?= $user['email'] ?>"><?= $user['email'] ?></a></h6>
                                                             <p><a class="text-decoration-none" href="tel:<?= $user['cell'] ?>"><?= $user['cell'] ?></a></p>
-                                                        </td>
+                                                        </td> 
                                                         <td>
                                                             <div>
                                                                 <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
                                                                     <p class="text-success"><?= $user['last_login'] ?></p>
-                                                                </div>
+                                                                </div>  
                                                             </div>
-                                                        </td>
-                                                        <td>
+                                                        </td> 
+                                                        <td> 
                                                             <div class="badge badge-opacity-warning"><?= ($user['status'] == 1) ? 'Active' : 'Inactive' ?></div>
-                                                        </td>
-                                                    </tr>
+                                                        </td>  
+                                                    </tr> 
                                                 <?php endforeach; ?>
-                                            </tbody>
+                                            </tbody>   
                                         </table>
                                     </div>
                                 </div>
