@@ -60,17 +60,20 @@ class Main_model extends CI_Model
 			$companyCode = rand(1000, 9999);
 			$code = $this->buildRandomString();
 			$company = array(
+
 				'contact_person' => $this->input->post('name'),
 				'companyCode' => $companyCode,
 				'contact_person_email' => $this->input->post('email'),
 				'contact_person_cell' => $this->input->post('phone'),
 				'email' => $this->input->post('email'),
 				'cell' => $this->input->post('phone'),
+
 			);
 			$this->admin_model->insert('companies', $company);
 
 			$names = explode(' ', $this->input->post('name'));
 			$admin = array(
+
 				 'comp_id' => $this->db->insert_id(),
 				'name' => $names[0],
 				'surname' => $names[1],
@@ -82,6 +85,7 @@ class Main_model extends CI_Model
 				'type' => 'Admin',
 				'status' => 0,
 				'last_login' => '0000-00-00 00:00:00',
+				
 			);
 			$this->admin_model->insert('admin', $admin);
 
