@@ -48,7 +48,6 @@
     submitForm();
   });
 
-
   function submitForm() {
     var formdata = new FormData();
     formdata.append("email", _(".email").value);
@@ -78,7 +77,6 @@
       _('.login_response').innerHTML = '<div class="alert alert-danger" role="alert">' + reply.message + '</div>'
     }
   }
-
   window.onload = (event) => {
     if (localStorage.getItem('remember_me')) {
       _(".email").value = localStorage.getItem('email')

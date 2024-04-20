@@ -38,7 +38,6 @@
     submitForm();
   });
 
-
   function submitForm() {
     var formdata = new FormData();
     formdata.append("password", _(".password").value);
@@ -53,7 +52,6 @@
 
   function completeHandler(event) {
     var reply = JSON.parse(event.target.responseText);
-
 
     if (reply.status) {
       _('.login_response').innerHTML = '<div class="alert alert-success" role="alert">' + reply.message + '</div>'

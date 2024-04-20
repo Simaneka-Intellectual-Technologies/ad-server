@@ -150,7 +150,7 @@ class Admin extends CI_Controller
 				// 	'by' => 'DESC',
 				// );
 				$data[$page] = $this->admin_model->getAll($page, true, NULL);
-				
+
 			}
 
 
@@ -447,8 +447,6 @@ class Admin extends CI_Controller
 							$config['max_width'] = 1024;
 							$config['max_height'] = 768;
 							$config['upload_path'] = SPACE . 'images/users/';
-
-
 							$this->load->library('upload', $config);
 
 							if (!$this->upload->do_upload('document_image')) {
@@ -463,7 +461,7 @@ class Admin extends CI_Controller
 								$data['image'] = base_url('/assets/admin/uploads/images/users/' . $image);
 							}
 						}
-
+						
 						$where = array(
 							'user_id' => $this->input->post('document_id')
 						);
