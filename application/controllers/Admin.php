@@ -10,6 +10,7 @@ class Admin extends CI_Controller
 	public function page($page = '', $type = '', $slug = '')
 	{
 
+
 		if ($this->session->userdata('logged_in') | $this->session->userdata('client_id')) {
 
 			if ($page == 'payments' | $page == 'recordView') {
@@ -136,7 +137,7 @@ class Admin extends CI_Controller
 				$data['subscription'] = $this->admin_model->get_where($page, $where, true, $sort);
 				$data['packages'] = $this->admin_model->get_where('packages', null, false, null);
 			} elseif ($page == 'publish') {
-				
+
 			} elseif ($page == 'companies') {
 				$data['company'] = $this->admin_model->get_where($page, null, true, null)[0];
 			} elseif ($page == 'bidders') {
@@ -220,7 +221,7 @@ class Admin extends CI_Controller
 				if ($_FILES['file']['name'] != '') {
 					$type = $this->admin_model->get_type($this->input->post('type'));
 
-					$path = SPACE . str_replace(' ', '_',  strtolower($type['name'])) . '/';
+					$path = SPACE . str_replace(' ', '_', strtolower($type['name'])) . '/';
 
 					$config['allowed_types'] = 'gif|jpg|png|jpeg|word|pdf';
 					$config['max_size'] = 2048;
@@ -236,24 +237,24 @@ class Admin extends CI_Controller
 						$upload = array('upload_data' => $this->upload->data())['upload_data'];
 
 						$image = str_replace(' ', '', strtolower($this->input->post('title'))) . date('Y_M_D_H_i_s') . $upload['file_ext'];
-						rename($path .  $upload['file_name'], $path . $image);
-						$data['file'] = 'ads/'. str_replace(' ', '_',  strtolower($type['name'])) . '/' . $image;
+						rename($path . $upload['file_name'], $path . $image);
+						$data['file'] = 'ads/' . str_replace(' ', '_', strtolower($type['name'])) . '/' . $image;
 					}
 				}
-				
+
 				if ($slug == 'ad') {
 
-		                    	foreach ($_POST as $key => $value) {
-		                    	    if ($key != substr($slug, 0, -1) . '_image') {
-			            	        $data[$key] = ($key == 'password') ? md5($value) : $value;
-			        	    }
-			                }
-					
+					foreach ($_POST as $key => $value) {
+						if ($key != substr($slug, 0, -1) . '_image') {
+							$data[$key] = ($key == 'password') ? md5($value) : $value;
+						}
+					}
+
 					$data['comp_id'] = $this->session->userdata('comp_id');
 					$slug .= 's';
-					
+
 					if ($this->input->post('ad_id')) {
-						
+
 						$where = array(
 							'ad_id' => $this->input->post('ad_id')
 						);
@@ -263,7 +264,7 @@ class Admin extends CI_Controller
 						$this->admin_model->insert($slug, $data);
 					}
 
-					redirect(base_url('admin/page/'. $slug));
+					redirect(base_url('admin/page/' . $slug));
 				} elseif ($slug == 'billing') {
 					if ($this->input->post('billing_id')) {
 						$client = explode('|', $this->input->post('billing_client'));
