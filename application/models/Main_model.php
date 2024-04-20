@@ -92,7 +92,7 @@ class Main_model extends CI_Model
 	}
 	function sendCreationMail($name, $email, $link, $password, $companyCode)
 	{
-		
+
 		$message = 'Your account has been created, to complete the registration please click the following link and verify you account!';
 		$emailBody = $this->buildMailBody($email, $link, $password, $companyCode, $name, $message);
 
@@ -140,6 +140,7 @@ class Main_model extends CI_Model
 					'message' => $mail->ErrorInfo
 				);
         }else{
+
 			return array(
 					'status' => true,
 					'message' => "Account creation successfully, please cheack your mail for verification!"
@@ -148,6 +149,7 @@ class Main_model extends CI_Model
 	}
 	public function buildMailBody($email, $link, $password, $companyCode, $name, $message)
 	{
+
 		return 'Hi, '. $name .' <br>'
 		. $message. '<br><br>
 		<a href="' . $link . '" style="text-decoration:none; background-color:#1F6B6D; padding:10px 20px; border:none; color:#fff; outline:none; border-radius: 10px" >Click Here To Activate Your Account</a>
@@ -174,5 +176,6 @@ class Main_model extends CI_Model
 		</table><br>
 		<p style="font-size: 10px; line-height: 150%;"><span style="font-family: Lato, sans-serif; font-size: 10px; line-height: 24px;">Thank you very much for you continual support and we hope that you are satisfied with the services provided, should have a complaint or query please do not hesiste to contact us on the details below!</span></p>
 		';
+		
 	}
 }
