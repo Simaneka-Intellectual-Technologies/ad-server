@@ -150,6 +150,7 @@ class Admin extends CI_Controller
 				// 	'by' => 'DESC',
 				// );
 				$data[$page] = $this->admin_model->getAll($page, true, NULL);
+				
 			}
 
 
