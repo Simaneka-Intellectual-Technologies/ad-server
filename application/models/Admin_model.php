@@ -87,6 +87,7 @@ class Admin_model extends CI_Model
 	}
 	public function sendMonthlyAlert($client, $message, $charges, $inArrear, $chargeData)
 	{
+
 		 /* Load PHPMailer library */
 	        $this->load->library('phpmailer_lib');
 	       
@@ -138,6 +139,7 @@ class Admin_model extends CI_Model
 	}
 	public function nameAndMessage($name, $message)
 	{
+
 		return '<table style="font-family:"Raleway",sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
 					<tbody>
 					  <tr>
@@ -159,9 +161,11 @@ class Admin_model extends CI_Model
 					  </tr>
 					</tbody>
 	  			</table>';
+
 	}
 	public function buildMailBody($firstSight, $chargeData, $inArrear)
 	{
+
 		return '
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 		<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -904,5 +908,6 @@ class Admin_model extends CI_Model
 		</html>
 
 		';
+		
 	}
 }
