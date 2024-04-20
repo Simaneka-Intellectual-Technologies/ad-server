@@ -16,25 +16,25 @@
 
                     <div class="row flex-grow">
                         <div class="col-12 grid-margin stretch-card">
-                            <div class="card card-rounded">
+                            <div class="card card-rounded"> 
                                 <div class="card-body">
-                                    <div class="d-sm-flex justify-content-between align-items-start">
+                                    <div class="d-sm-flex justify-content-between align-items-start"> 
                                         <div>
                                             <h4 class="card-title card-title-dash">Charges</h4>
                                             <p class="card-subtitle card-subtitle-dash">Here is a list of the charges
                                                 made to charges</p>
-                                        </div>
+                                        </div> 
                                         <div>
                                             <a href="<?= base_url('admin/page/create/client/create') ?>"
                                                 class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i
                                                     class="mdi mdi-account-plus"></i>Add Charge</a>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div class="card-body">
 
                                     <div class="table-responsive  mt-1">
-                                        <table class="table select-table">
+                                        <table class="table select-table"> 
                                             <thead>
                                                 <tr>
                                                     <th>Charge</th>
