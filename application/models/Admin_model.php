@@ -338,38 +338,38 @@ class Admin_model extends CI_Model
 		  <!--[if (!mso)&(!IE)]><!--><div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
 		
 		<table style="font-family:"Raleway",sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
-		  <tbody>
-		    <tr>
+		  <tbody> 
+		    <tr> 
 		      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px;font-family:"Raleway",sans-serif;" align="left">
 		
 		<table width="100%" cellpadding="0" cellspacing="0" border="0">
-		  <tr>
+		  <tr> 
 		    <td class="v-text-align" style="padding-right: 0px;padding-left: 0px;" align="center">
 		
 		      <img align="center" border="0" src="' . base_url('assets/admin/images/email/image-5.png') . '" alt="Invoice Banner" title="Invoice Banner" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 52%;max-width: 275.6px;" width="275.6" class="v-src-width v-src-max-width"/>
 		
-		    </td>
+		    </td> 
 		  </tr>
 		</table>
 		
 		      </td>
 		    </tr>
-		  </tbody>
-		</table>
+		  </tbody> 
+		</table> 
 		
 		  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
 		  </div>
-		</div>
+		</div> 
 		<!--[if (mso)|(IE)]></td><![endif]-->
 		      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
 		    </div>
 		  </div>
-		  </div>
+		  </div> 
 		
 		
+		 
 		
-		
-		
+		 
 		<div class="u-row-container" style="padding: 0px;background-color: transparent">
 		  <div class="u-row" style="margin: 0 auto;min-width: 320px;max-width: 550px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #03989e;">
 		    <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;">
@@ -380,16 +380,16 @@ class Admin_model extends CI_Model
 		  <div style="height: 100%;width: 100% !important;">
 		  <!--[if (!mso)&(!IE)]><!--><div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
 		
-		' . $firstSight . '
+		' . $firstSight . ' 
 		
 				<table style="font-family:"Raleway",sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
 				  <tbody>
-				    <tr>
+				    <tr> 
 				      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 12px;font-family:"Raleway",sans-serif;" align="left">
 
 				  <div class="v-text-align" style="font-size: 14px; color: #2c3581; line-height: 140%; text-align: center; word-wrap: break-word;">
 				    <p style="font-size: 14px; line-height: 140%;"><strong>I N V O I C E&nbsp; &nbsp;</strong> R E C A P</p>
-				  </div>
+				  </div> 
 
 				      </td>
 				    </tr>
@@ -397,13 +397,13 @@ class Admin_model extends CI_Model
 				</table>
 		
 		  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
-		  </div>
-		</div>
+		  </div> 
+		</div> 
 		<!--[if (mso)|(IE)]></td><![endif]-->
 		      <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
 		    </div>
-		  </div>
-		  </div>
+		  </div> 
+		  </div> 
 		
 		
 		
