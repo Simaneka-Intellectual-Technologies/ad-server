@@ -1,28 +1,28 @@
 <?php
 class Admin_model extends CI_Model
-{
+{ 
 	public function __construct()
-	{
+	{ 
 		$this->load->database();
-	}
+	} 
 	public function get_version()
-	{
+	{ 
 		$this->db->limit(1);
 		$this->db->from('versions');
 		$this->db->order_by('update_date', "DESC");
 		return $this->db->get()->row_array();
 	}
 	public function get_select_options($table, $id, $column)
-	{
+	{ 
 		$this->db->from($table);
 		$this->db->order_by($column, "DESC");
 		$query = $this->db->get();
 		if ($query->result()) {
 			foreach ($query->result_array() as $row) {
 				echo '<option ' . (($id == $row[$column]) ? 'select' : '') . ' value="' . $row[$column] . '">' . $row[$column] . '</option>';
-			}
-		}
-	}
+			} 
+		} 
+	} 
 	public function get_login()
 	{
 		$this->db->select("logged_in");
@@ -32,15 +32,15 @@ class Admin_model extends CI_Model
 		$query = $this->db->get();
 		if ($query->result()) {
 			return $query->result()[0]->logged_in;
-		}
+		} 
 		return false;
-	}
+	} 
 	public function update($table, $where, $data)
 	{
 		$this->db->where($where);
 		if ($this->db->update($table, $data)) {
 			return true;
-		}
+		} 
 
 		return false;
 	}
@@ -254,7 +254,7 @@ class Admin_model extends CI_Model
 		a[x-apple-data-detectors="true"] {
 		  color: inherit !important;
 		  text-decoration: none !important;
-		}
+		} 
 
 		@media (max-width: 480px) {
 		  .hide-mobile {
@@ -263,16 +263,16 @@ class Admin_model extends CI_Model
 		    display: none !important;
 		  }
 		}
-
+ 
 		table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: underline; } @media (max-width: 480px) { #u_content_text_4 .v-container-padding-padding { padding: 15px 10px 10px !important; } #u_content_text_2 .v-container-padding-padding { padding: 10px 10px 15px !important; } #u_content_image_5 .v-container-padding-padding { padding: 15px 10px 20px !important; } #u_content_image_5 .v-src-width { width: auto !important; } #u_content_image_5 .v-src-max-width { max-width: 52% !important; } #u_content_image_4 .v-container-padding-padding { padding: 15px 10px 20px !important; } #u_content_image_4 .v-src-width { width: auto !important; } #u_content_image_4 .v-src-max-width { max-width: 52% !important; } #u_content_text_17 .v-container-padding-padding { padding: 10px !important; } #u_content_text_17 .v-text-align { text-align: center !important; } #u_content_text_5 .v-container-padding-padding { padding: 10px 10px 20px !important; } }
 		    </style>
 
-
+ 
 
 		<!--[if !mso]><!--><link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet" type="text/css"><!--<![endif]-->
 		
 		</head>
-		
+		 
 		<body class="clean-body u_body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #ffffff;color: #000000">
 		  <!--[if IE]><div class="ie-container"><![endif]-->
 		  <!--[if mso]><div class="mso-container"><![endif]-->
@@ -281,14 +281,14 @@ class Admin_model extends CI_Model
 		  <tr style="vertical-align: top">
 		    <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
 		    <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #ffffff;"><![endif]-->
-		
+		 
 		
 		
 		<div class="u-row-container" style="padding: 0px;background-color: transparent">
 		  <div class="u-row" style="margin: 0 auto;min-width: 320px;max-width: 550px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
 		    <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;">
 		      <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:550px;"><tr style="background-color: transparent;"><![endif]-->
-		
+		 
 		<!--[if (mso)|(IE)]><td align="center" width="550" style="width: 550px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
 		<div class="u-col u-col-100" style="max-width: 320px;min-width: 550px;display: table-cell;vertical-align: top;">
 		  <div style="height: 100%;width: 100% !important;">
@@ -298,13 +298,13 @@ class Admin_model extends CI_Model
 		  <tbody>
 		    <tr>
 		      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 15px;font-family:"Raleway",sans-serif;" align="left">
-		
+		 
 		<table width="100%" cellpadding="0" cellspacing="0" border="0">
 		  <tr>
 		    <td class="v-text-align" style="padding-right: 0px;padding-left: 0px;" align="center">
 		
 		      <img align="center" border="0" src="' . base_url('assets/admin/images/email/image-7.png') . '" alt="Logo" title="Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 27%;max-width: 143.1px;" width="143.1" class="v-src-width v-src-max-width"/>
-		
+		 
 		    </td>
 		  </tr>
 		</table>
@@ -313,7 +313,7 @@ class Admin_model extends CI_Model
 		    </tr>
 		  </tbody>
 		</table>
-		
+		 
 		  <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
 		  </div>
 		</div>
@@ -324,7 +324,7 @@ class Admin_model extends CI_Model
 		  </div>
 		
 		
-		
+		 
 		
 		
 		<div class="u-row-container" style="padding: 0px;background-color: transparent">
