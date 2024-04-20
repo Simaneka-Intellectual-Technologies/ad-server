@@ -92,6 +92,7 @@ class Main_model extends CI_Model
 	}
 	function sendCreationMail($name, $email, $link, $password, $companyCode)
 	{
+		
 		$message = 'Your account has been created, to complete the registration please click the following link and verify you account!';
 		$emailBody = $this->buildMailBody($email, $link, $password, $companyCode, $name, $message);
 
