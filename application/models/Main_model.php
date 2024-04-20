@@ -19,7 +19,7 @@ class Main_model extends CI_Model
 			'ad_id' => $id
 		);
 
-		return $this->db->get_where('ads', $where)->row_array();
+		return  $this->db->get_where('ads', $where)->row_array();
 	}
 	public function get_ad($type)
 	{
@@ -71,7 +71,7 @@ class Main_model extends CI_Model
 
 			$names = explode(' ', $this->input->post('name'));
 			$admin = array(
-				'comp_id' => $this->db->insert_id(),
+				 'comp_id' => $this->db->insert_id(),
 				'name' => $names[0],
 				'surname' => $names[1],
 				'email' => $this->input->post('email'),
@@ -167,7 +167,7 @@ class Main_model extends CI_Model
 		    <td style="width: 40%">' . $password . '</td>
 		  </tr>
 		  <tr>
-		    <td style="width: 20%">Company Code</td>
+		    <td style="width: 20%"> Company Code</td>
 		    <td style="width: 40%">' . $companyCode . '</td>
 		  </tr>
 		</table><br>
