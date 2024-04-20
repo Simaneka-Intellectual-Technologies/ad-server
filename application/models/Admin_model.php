@@ -20,7 +20,7 @@ class Admin_model extends CI_Model
 		if ($query->result()) {
 			foreach ($query->result_array() as $row) {
 				echo '<option ' . (($id == $row[$column]) ? 'select' : '') . ' value="' . $row[$column] . '">' . $row[$column] . '</option>';
-			}
+			 }
 		}
 	}
 	public function get_login()
