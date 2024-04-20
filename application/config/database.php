@@ -78,6 +78,7 @@ $password = '';
 $user = '';
 
 
+
 if ($_SERVER['DOCUMENT_ROOT'] == 'C:/xampp/htdocs') {
 	$database = 'ads';
 	$password = '';
