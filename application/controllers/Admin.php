@@ -144,6 +144,7 @@ class Admin extends CI_Controller
 			} elseif ($page == 'companies') {
 				$data['company'] = $this->admin_model->get_where($page, null, true, null)[0];
 			} else {
+				
 				// $sort = array(
 				// 	'col' => 'created_on',
 				// 	'by' => 'DESC',

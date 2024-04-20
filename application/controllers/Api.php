@@ -48,6 +48,8 @@ class API extends CI_Controller
                 )
             );
         }
+
+
         // YJ6kTKj7pcemMXVqLNCrPvB4n2HSf8EU
         // C2yM9apbB3UscfheT6Y8NkxzwgDAtGQV
         // nvy2Uh3k7zXERMWBmeKJjCxLNr6Za9Dg
@@ -104,6 +106,7 @@ class API extends CI_Controller
         {
             echo json_encode(
                 array(
+
                     'status' => false,
                     'message' => 'We do not have ' . str_replace('_', ' ', $type) . ' advertisments!',
                     'link' => base_url('assets/ads/default.jpg'),
@@ -111,14 +114,18 @@ class API extends CI_Controller
                     'href' => base_url('track'),
                     'site' => $site[0]['site_name'],
                     'website' => $site[0]['link'],
+                    
                 )
             );
         }
     }
     public function track($id)
     {
+
+    
         $ad = $this->main_model->update_clicks($id);
 
         header('Location: ' . $ad['redirect_link']);
+
     }
 }
