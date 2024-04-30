@@ -9,7 +9,6 @@ class Admin extends CI_Controller
 	}
 	public function page($page = '', $type = '', $slug = '')
 	{
-
 		if ($this->session->userdata('logged_in') | $this->session->userdata('client_id')) {
 
 			if ($page == 'payments' | $page == 'recordView') {
@@ -65,23 +64,8 @@ class Admin extends CI_Controller
 
 			} elseif ($page == 'dashboard') {
 
-				$lastLogin = $this->admin_model->get_login();
+				$data['ads'] = $this->admin_model->get_where('ads', null, false, null);
 
-				$this->db->where('client_created_on >=', $lastLogin);
-				$newClients = $this->admin_model->getAll('clients', true, NULL);
-
-				$clientCount = count($newClients);
-
-				$data['notification_count'] = $clientCount;
-				if ($clientCount > 0) {
-
-					for ($i = 0; $i < $clientCount; $i++) {
-						$names[$i] = $newClients[$i]['client_name'];
-					}
-
-					$clientCount;
-					$data['notification_names'] = $names;
-				}
 			} elseif ($page == 'pay') {
 				$where = array(
 					'charge_id' => $slug
@@ -133,10 +117,25 @@ class Admin extends CI_Controller
 					'col' => 'subscription_end_date',
 					'by' => 'DESC'
 				);
-				$data['subscription'] = $this->admin_model->get_where($page, $where, true, $sort);
+				$data['company'] = $this->admin_model->get_where('companies', null, true, null)[0];
 				$data['packages'] = $this->admin_model->get_where('packages', null, false, null);
 			} elseif ($page == 'publish') {
-				
+
+			} elseif ($page == 'bill') {
+				$data['ads'] = $this->admin_model->get_where('ads', null, true, null);
+				$data['company'] = $this->admin_model->get_where('companies', null, true, null)[0];
+				$data['clicks'] = 0;
+				$data['impressions'] = 0;
+
+				foreach ($data['ads'] as $key => $ad) {
+					$data['clicks'] += $ad['clicks'];
+					$data['impressions'] += $ad['impressions'];
+				}
+				$content = $this->load->view('admin/plugins/bill/ad_invoice', $data, TRUE);
+
+				echo $content;
+				die();
+
 			} elseif ($page == 'companies') {
 				$data['company'] = $this->admin_model->get_where($page, null, true, null)[0];
 			} elseif ($page == 'bidders') {
@@ -220,7 +219,7 @@ class Admin extends CI_Controller
 				if ($_FILES['file']['name'] != '') {
 					$type = $this->admin_model->get_type($this->input->post('type'));
 
-					$path = SPACE . str_replace(' ', '_',  strtolower($type['name'])) . '/';
+					$path = SPACE . str_replace(' ', '_', strtolower($type['name'])) . '/';
 
 					$config['allowed_types'] = 'gif|jpg|png|jpeg|word|pdf';
 					$config['max_size'] = 2048;
@@ -236,24 +235,24 @@ class Admin extends CI_Controller
 						$upload = array('upload_data' => $this->upload->data())['upload_data'];
 
 						$image = str_replace(' ', '', strtolower($this->input->post('title'))) . date('Y_M_D_H_i_s') . $upload['file_ext'];
-						rename($path .  $upload['file_name'], $path . $image);
-						$data['file'] = 'ads/'. str_replace(' ', '_',  strtolower($type['name'])) . '/' . $image;
+						rename($path . $upload['file_name'], $path . $image);
+						$data['file'] = 'ads/' . str_replace(' ', '_', strtolower($type['name'])) . '/' . $image;
 					}
 				}
-				
+
 				if ($slug == 'ad') {
 
-		                    	foreach ($_POST as $key => $value) {
-		                    	    if ($key != substr($slug, 0, -1) . '_image') {
-			            	        $data[$key] = ($key == 'password') ? md5($value) : $value;
-			        	    }
-			                }
-					
+					foreach ($_POST as $key => $value) {
+						if ($key != substr($slug, 0, -1) . '_image') {
+							$data[$key] = ($key == 'password') ? md5($value) : $value;
+						}
+					}
+
 					$data['comp_id'] = $this->session->userdata('comp_id');
 					$slug .= 's';
-					
+
 					if ($this->input->post('ad_id')) {
-						
+
 						$where = array(
 							'ad_id' => $this->input->post('ad_id')
 						);
@@ -263,7 +262,9 @@ class Admin extends CI_Controller
 						$this->admin_model->insert($slug, $data);
 					}
 
-					redirect(base_url('admin/page/'. $slug));
+					//Bill client
+					// $this->admin_model->billForAd($this->input->post('visibility'));
+					redirect(base_url('admin/page/' . $slug));
 				} elseif ($slug == 'billing') {
 					if ($this->input->post('billing_id')) {
 						$client = explode('|', $this->input->post('billing_client'));
@@ -690,41 +691,151 @@ class Admin extends CI_Controller
 
 			}
 		}
-		if ($type == 'sendQuote') {
+		if ($type == 'sendReport') {
 			if ($this->session->userdata('logged_in')) {
 				$where = array(
-					'quote_id' => $this->input->post('quote_id')
+					'ad_id' => $this->input->post('ad_id')
 				);
-				$quote = $this->admin_model->get_where('quotes', $where, true, null)[0];
-				$company = $this->admin_model->get_where('companies', null, true, null)[0];
+				$ad = $this->admin_model->get_where('ads', $where, true, null)[0];
 
-				$config = array(
-					'mailtype' => 'html',
-				);
+				$data['ad'] = $ad;
+				$report = $this->load->view('admin/report', $data, TRUE);
 
-				$this->email->initialize($config);
-				$this->email->from('no-reply@sytms.tech', SHORT_APP_NAME);
-				$this->email->to($quote['email']);
-				$this->email->cc($company['email']);
-				$this->email->subject($quote['name'] . ' Quote ' . APP_NAME);
-				$this->email->message($quote['quote']);
+				$to = $this->input->post('email');
+				$subject = $ad['title'] . ' Report';
 
-				if ($this->email->send()) {
+				/* Load PHPMailer library */
+				$this->load->library('phpmailer_lib');
+
+				/* PHPMailer object */
+				$mail = $this->phpmailer_lib->load();
+
+				/* SMTP configuration */
+				$mail->isSMTP();
+				$mail->Host = 'smtp.hostinger.com';
+				$mail->SMTPAuth = true;
+				$mail->Username = 'info@simaneka.com';
+				$mail->Password = '15963QWErty!@#';
+				$mail->SMTPSecure = 'ssl';
+				$mail->Port = 465;
+
+				$mail->setFrom('info@simaneka.com', SHORT_APP_NAME);
+				$mail->addReplyTo('info@simaneka.com', 'Varde Daniel');
+
+				/* Add a recipient */
+				$mail->addAddress($to);
+
+				/* Add cc or bcc */
+				$mail->addCC('info@simaneka.com');
+				// $mail->addBCC('info@simaneka.com');
+
+				/* Email subject */
+				$mail->Subject = $subject;
+
+				/* Set email format to HTML */
+				$mail->isHTML(true);
+
+				/* Email body content */
+				$mail->Body = $report;
+
+				/* Send email */
+				if ($mail->send()) {
 					echo json_encode(
 						array(
 							'status' => true,
-							'message' => 'Quote Sent to ' . $quote['email']
+							'message' => 'Ad Sent to ' . $this->input->post('email')
 						)
 					);
 				} else {
 					echo json_encode(
 						array(
 							'status' => false,
-							'message' => 'Quote Could Not Be Sent!'
+							'message' => 'Ad Could Not Be Sent!'
 						)
 					);
 				}
 			}
+		}
+		if ($type == 'report') {
+			if ($this->session->userdata('logged_in')) {
+				$where = array(
+					'ad_id' => $this->input->post('id')
+				);
+				$ad = $this->admin_model->get_where('ads', $where, true, null);
+
+
+				if ($ad) {
+					$ad = $ad[0];
+
+					$data['ad'] = $ad;
+					$report = $this->load->view('admin/report', $data, TRUE);
+					echo json_encode(
+						array(
+							'status' => true,
+							'message' => 'Ads was Successfully Retrieved!',
+							'report' => $report,
+							'name' => $ad['title'],
+							'ad_id' => $ad['ad_id'],
+						)
+					);
+				} else {
+					echo json_encode(
+						array(
+							'status' => false,
+							'message' => 'Ad was not Found!',
+							'ad' => ''
+						)
+					);
+				}
+
+			}
+		}
+
+		if ($type == 'topUp') {
+			if ($this->admin_model->topUp()) {
+				echo json_encode(
+					array(
+						'status' => true,
+						'message' => 'Top Up was successful!'
+					)
+				);
+			} else {
+				echo json_encode(
+					array(
+						'status' => false,
+						'message' => 'Top Up failed, please try again!'
+					)
+				);
+			}
+		}
+
+		if ($type == 'ads') {
+			$data['ads'] = $this->admin_model->get_where('ads', null, true, null);
+			$data['company'] = $this->admin_model->get_where('companies', null, true, null)[0];
+			$data['clicks'] = 0;
+			$data['impressions'] = 0;
+
+			foreach ($data['ads'] as $key => $ad) {
+				$data['clicks'] += $ad['clicks'];
+				$data['impressions'] += $ad['impressions'];
+			}
+			$content = $this->load->view('admin/plugins/bill/ad_invoice', $data, TRUE);
+
+			echo $content;
+			// die();	
+			// Create a response object
+			// $response = $this->output->set_content_type('text/xml');
+
+			// Set the response content
+			// $response->set_output($content);
+
+			// Return the response
+			// echo json_encode(
+			// 	array(
+			// 		'status' => true,
+			// 		'quote' => $content
+			// 	)
+			// );
 		}
 	}
 	public function checkPaidCharges()

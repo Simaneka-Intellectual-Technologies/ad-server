@@ -1,4 +1,5 @@
-<form class="forms-sample p-3" action="<?= base_url('admin/action/create/ad') ?>" method="POST" enctype="multipart/form-data">
+<form class="forms-sample p-3" action="<?= base_url('admin/action/create/ad') ?>" method="POST"
+    enctype="multipart/form-data">
     <input type="hidden" name="ad_id" value="<?= isset($ad['ad_id']) ? $ad['ad_id'] : '' ?>">
     <div class="row">
         <div class="col-md-6">
@@ -25,42 +26,63 @@
         <div class="col-md-6">
             <div class="form-group row">
                 <div class="col-sm-9">
-                    <input type="text" name="title" class="form-control" placeholder="Title" required="required" value="<?= isset($ad['title']) ? $ad['title'] : '' ?>">
+                    <input type="text" name="title" class="form-control" placeholder="Title" required="required"
+                        value="<?= isset($ad['title']) ? $ad['title'] : '' ?>">
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group row">
                 <div class="col-sm-9">
-                    <input type="text" name="alt" class="form-control" placeholder="Alternative Text" required="required" value="<?= isset($ad['alt']) ? $ad['alt'] : '' ?>">
+                    <input type="text" name="alt" class="form-control" placeholder="Alternative Text"
+                        required="required" value="<?= isset($ad['alt']) ? $ad['alt'] : '' ?>">
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group row">
                 <div class="col-sm-9">
-                    <input type="date" name="start_date" class="form-control" placeholder="start_date" required="required" value="<?= isset($ad['start_date']) ? $ad['start_date'] : '' ?>">
+                    <input type="date" name="start_date" class="form-control" placeholder="start_date"
+                        required="required" value="<?= isset($ad['start_date']) ? $ad['start_date'] : '' ?>">
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group row">
                 <div class="col-sm-9">
-                    <input type="date" name="end_date" class="form-control" placeholder="end_date" required="required" value="<?= isset($ad['end_date']) ? $ad['end_date'] : '' ?>">
+                    <input type="date" name="end_date" class="form-control" placeholder="end_date" required="required"
+                        value="<?= isset($ad['end_date']) ? $ad['end_date'] : '' ?>">
                 </div>
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group row">
                 <div class="col-sm-11">
-                    <textarea name="description" id="description" class="form-control" placeholder="Description" cols="30" rows="10"><?= isset($ad['description']) ? $ad['description'] : '' ?></textarea>
+                    <textarea name="description" id="description" class="form-control" placeholder="Description"
+                        cols="30" rows="10"><?= isset($ad['description']) ? $ad['description'] : '' ?></textarea>
                 </div>
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group row">
                 <div class="col-sm-11">
-                    <input type="text" name="redirect_link" class="form-control" placeholder="Redirect Link" required="required" value="<?= isset($ad['redirect_link']) ? $ad['redirect_link'] : '' ?>">
+                    <input type="text" name="redirect_link" class="form-control" placeholder="Redirect Link"
+                        required="required" value="<?= isset($ad['redirect_link']) ? $ad['redirect_link'] : '' ?>">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group row">
+                <div class="col-sm-11">
+                    <select name="visibility" class="form-control" id="exampleFormControlSelect1">
+                        <option value="0" disabled>Select Visiblity</option>
+                        <option value="Basic" <?= (isset($ad) && $ad['visibility'] == 'Basic') ? 'selected' : '' ?>>
+                            Basic</option>
+                        <option value="Standard"
+                            <?= (isset($ad) && $ad['visibility'] == 'Standard') ? 'selected' : '' ?>>Standard</option>
+                        <option value="Premium" <?= (isset($ad) && $ad['visibility'] == 'Premium') ? 'selected' : '' ?>>
+                            Premium</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -71,11 +93,15 @@
                 <div class="mt-3">
                     <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                         <div class="d-flex">
-                            <img class="img-sm rounded-10" src="<?= isset($ad['file']) ? base_url('assets/'. $ad['file']) : base_url('/assets/ads/default_ad.jpg') ?>" alt="<?= isset($ad['title']) ? $ad['title'] : '' ?> Advertisement">
+                            <img class="img-sm rounded-10"
+                                src="<?= isset($ad['file']) ? base_url('assets/'. $ad['file']) : base_url('/assets/ads/default_ad.jpg') ?>"
+                                alt="<?= isset($ad['title']) ? $ad['title'] : '' ?> Advertisement">
                             <div class="wrapper ms-3">
-                                <p class="ms-1 mb-1 fw-bold"><?= isset($ad['file']) ? $ad['title'] : '' ?> Advertisment</p>
+                                <p class="ms-1 mb-1 fw-bold"><?= isset($ad['file']) ? $ad['title'] : '' ?> Advertisment
+                                </p>
                                 <input type="file" name="file" class="file-upload-default">
-                                <small class="text-muted mb-0"><?= isset($ad['file']) ? base_url('assets/'. $ad['file']) : base_url('/assets/ads/default_ad.jpg') ?></small>
+                                <small
+                                    class="text-muted mb-0"><?= isset($ad['file']) ? base_url('assets/'. $ad['file']) : base_url('/assets/ads/default_ad.jpg') ?></small>
                             </div>
                         </div>
                         <div class="text-muted text-small">

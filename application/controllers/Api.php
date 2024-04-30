@@ -1,27 +1,25 @@
 <?php
 class API extends CI_Controller
 {
-	public function index()
-	{
-		echo 'Hello 123456789!';
-	}
+    public function index()
+    {
+        echo 'Hello 123456789!';
+    }
     public function get()
     {
-        if(isset($this->input->request_headers()['authorisation']))
-        {
+        if (isset($this->input->request_headers()['authorisation'])) {
             $auth_code = $this->input->request_headers()['authorisation'];
 
             $where = array(
                 'auth_code' => $auth_code
             );
-            $site = $this->main_model->get_where('sites', $where);
-            if($site)
-            {
-                $type = $this->input->get('type');
+            $site = $this->main_model->get_where('companies', $where);
+            if ($site) {
+                $type = $this->input->post('type');
+                $tags = $this->input->post('tags');
                 if (isset($type) && $type != '') {
-                    $this->response($type, $site);
-                }
-                else {
+                    $this->response($type, $tags, $site);
+                } else {
                     echo json_encode(
                         array(
                             'status' => false,
@@ -29,8 +27,7 @@ class API extends CI_Controller
                         )
                     );
                 }
-            }
-            else {
+            } else {
                 echo json_encode(
                     array(
                         'status' => false,
@@ -38,9 +35,7 @@ class API extends CI_Controller
                     )
                 );
             }
-        }
-        else 
-        {
+        } else {
             echo json_encode(
                 array(
                     'status' => false,
@@ -64,29 +59,26 @@ class API extends CI_Controller
         // VDscPNFgKq7wpn63Zb2kHGWm4ASLERvM
         // fK7gFZeYQBduwJVNypHmzGjPcDShW695
     }
-    public function response($type, $site)
+    public function response($type, $tags, $site)
     {
+        $site = $site[0];
         $folder = strtolower(str_replace(' ', '_', $type));
-        if(file_exists(FCPATH . 'assets/ads/'. $folder))
-        {
-            $ad = $this->main_model->get_ad($type);
+        if (file_exists(FCPATH . 'assets/ads/' . $folder)) {
+            $ad = $this->main_model->get_ad($type, $tags, $site);
 
-            if($ad)
-            {
+            if ($ad['status']) {
                 echo json_encode(
                     array(
                         'status' => true,
-                        'message' => 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!',
-                        'link' => base_url('assets/ads/'. $folder .'/'. $ad['file']),
+                        'message' => $ad['message'],
+                        'link' => base_url('assets/' . $ad['ad']['file']),
                         'alt' => $type . ' Advetisment for ADS',
-                        'href' => base_url('api/track/'. $ad['ad_id']),
-                        'site' => $site[0]['site_name'],
-                        'website' => $site[0]['link'],
+                        'href' => base_url('api/track/' . $ad['ad']['ad_id']),
+                        'site' => $site['title'],
+                        'website' => $site['website'],
                     )
                 );
-            }
-            else
-            {
+            } else {
                 echo json_encode(
                     array(
                         'status' => true,
@@ -94,14 +86,12 @@ class API extends CI_Controller
                         'link' => base_url('assets/ads/default.jpg'),
                         'alt' => $type . ' Advetisment Not Listed!',
                         'href' => base_url('track'),
-                        'site' => $site[0]['site_name'],
-                        'website' => $site[0]['link'],
+                        'site' => $site['title'],
+                        'website' => $site['website'],
                     )
                 );
             }
-        }
-        else
-        {
+        } else {
             echo json_encode(
                 array(
                     'status' => false,
@@ -109,8 +99,8 @@ class API extends CI_Controller
                     'link' => base_url('assets/ads/default.jpg'),
                     'alt' => $type . ' Advetisment Not Found!',
                     'href' => base_url('track'),
-                    'site' => $site[0]['site_name'],
-                    'website' => $site[0]['link'],
+                    'site' => $site['title'],
+                    'website' => $site['website'],
                 )
             );
         }

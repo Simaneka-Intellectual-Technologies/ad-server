@@ -31,48 +31,60 @@
     <meta name="language" content="en" />
     <meta name="copyright" content="<?= SHORT_APP_NAME ?>" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="description" content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
-    <meta name="keywords" content="AD, Advertisement, Server, Network, Publishers, Ads, Adverts, connections, linking, images, videos, namibia, simaneka, intellectual, technologies, system, windhoel, africa" />
+    <meta name="description"
+        content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
+    <meta name="keywords"
+        content="AD, Advertisement, Server, Network, Publishers, Ads, Adverts, connections, linking, images, videos, namibia, simaneka, intellectual, technologies, system, windhoel, africa" />
     <meta property="fb:app_id" content />
     <meta property="og:title" content="<?= SHORT_APP_NAME ?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
+    <meta property="og:description"
+        content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
     <meta property="og:url" content="<?= base_url() ?>/" />
     <meta property="og:site_name" content="<?= SHORT_APP_NAME ?> " />
     <meta property="og:image" content="<?= base_url('assets/landing/img/logos/logo_7.png') ?>" />
     <meta name="DC.title" content="<?= SHORT_APP_NAME ?>" />
-    <meta name="DC.description" lang="en" content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
+    <meta name="DC.description" lang="en"
+        content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
     <meta name="DC.date" content="<?= date('Y-m-d') ?>" />
     <meta name="DC.date.issued" content="<?= date('Y-m-d') ?>" />
     <meta name="DC.creator" content="<?= SHORT_APP_NAME ?>" />
     <meta name="DC.publisher" content="<?= SHORT_APP_NAME ?>" />
     <meta name="DC.language" content="de" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
+    <meta name="twitter:description"
+        content="Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!" />
     <meta name="twitter:title" content="<?= SHORT_APP_NAME ?>" />
     <meta name="twitter:site" content="@SimanekaIT" />
     <meta name="twitter:image" content="<?= base_url('assets/landing/img/logos/logo_7.png') ?>" />
     <link href="<?= base_url() ?>/" rel="canonical">
     <script type="application/ld+json">
     {
-    "@context": "https://schema.org/",
-    "headline": "<?= SHORT_APP_NAME ?>",
-    "description": "Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!",
-    "keywords": "AD, Advertisement, Server, Network, Publishers, Ads, Adverts, connections, linking, images, videos, namibia, simaneka, intellectual, technologies, system, windhoel, africa",
-    "@type": "WebPage",
-    "author":
+        "@context": "https://schema.org/",
+        "headline": "<?= SHORT_APP_NAME ?>",
+        "description": "Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!",
+        "keywords": "AD, Advertisement, Server, Network, Publishers, Ads, Adverts, connections, linking, images, videos, namibia, simaneka, intellectual, technologies, system, windhoel, africa",
+        "@type": "WebPage",
+        "author":
 
-    { "@type": "Organization", "url": "<?= SHORT_APP_NAME ?>" }
-    ,
-    "publisher": {
-    "@type": "Organization",
-    "name": "<?= SHORT_APP_NAME ?>",
-    "url": "<?= base_url() ?>",
-    "sameAs": [""],
-    "logo":
+        {
+            "@type": "Organization",
+            "url": "<?= SHORT_APP_NAME ?>"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "<?= SHORT_APP_NAME ?>",
+            "url": "<?= base_url() ?>",
+            "sameAs": [""],
+            "logo":
 
-    { "@type": "ImageObject", "url": "<?= base_url('assets/landing/img/logo_7.png') ?>", "width": "500", "height": "500" }
-    }
+            {
+                "@type": "ImageObject",
+                "url": "<?= base_url('assets/landing/img/logo_7.png') ?>",
+                "width": "500",
+                "height": "500"
+            }
+        }
     }
     </script>
 </head>
@@ -85,8 +97,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand main_logo" href="#home"> <img src="<?= base_url('assets/landing/img/logos/logo.png')?>" alt="logo"> </a>
-                        <a class="navbar-brand single_page_logo" href="#home"> <img src="<?= base_url('assets/landing/img/logos/footer_logo.png')?>" alt="logo"> </a>
+                        <a class="navbar-brand main_logo" href="#home"> <img
+                                src="<?= base_url('assets/landing/img/logos/logo.png')?>" alt="logo"> </a>
+                        <a class="navbar-brand single_page_logo" href="#home"> <img
+                                src="<?= base_url('assets/landing/img/logos/footer_logo.png')?>" alt="logo"> </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -109,7 +123,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <a href="#" class="d-none d-sm-block btn_1 home_page_btn">Admin</a>
+                        <a href="<?= base_url('admin') ?>" class="d-none d-sm-block btn_1 home_page_btn">Admin</a>
                     </nav>
                 </div>
             </div>
@@ -131,19 +145,26 @@
                         <div class="banner_text_iner">
                             <h1>Building Networks
                                 For People</h1>
-                            <p>A proffesional platform connecting publishers and advertisers to ease the process of advertising!</p>
+                            <p>A proffesional platform connecting publishers and advertisers to ease the process of
+                                advertising!</p>
                             <a href="#" class="btn_2">try for free</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_7.png')?>" alt="" class="feature_icon_1 custom-animation1">
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_8.png')?>" alt="" class="feature_icon_2 custom-animation2">
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_1.png')?>" alt="" class="feature_icon_3 custom-animation3">
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_2.png')?>" alt="" class="feature_icon_4 custom-animation4">
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_3.png')?>" alt="" class="feature_icon_5 custom-animation5">
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_4.png')?>" alt="" class="feature_icon_6 custom-animation6">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_7.png')?>" alt=""
+            class="feature_icon_1 custom-animation1">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_8.png')?>" alt=""
+            class="feature_icon_2 custom-animation2">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_1.png')?>" alt=""
+            class="feature_icon_3 custom-animation3">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_2.png')?>" alt=""
+            class="feature_icon_4 custom-animation4">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_3.png')?>" alt=""
+            class="feature_icon_5 custom-animation5">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_4.png')?>" alt=""
+            class="feature_icon_6 custom-animation6">
     </section>
     <!--::banner part start::-->
 
@@ -185,7 +206,8 @@
                 </div>
             </div>
         </div>
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_1.png')?>" alt="" class="feature_icon_1 custom-animation1">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_1.png')?>" alt=""
+            class="feature_icon_1 custom-animation1">
     </section>
     <!--::use sasu part end::-->
 
@@ -213,7 +235,8 @@
                 </div>
             </div>
         </div>
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_4.png')?>" alt="" class="feature_icon_1 custom-animation1">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_4.png')?>" alt=""
+            class="feature_icon_1 custom-animation1">
     </section>
     <!--::about_us part end::-->
 
@@ -241,7 +264,8 @@
                 </div>
             </div>
         </div>
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_5.png')?>" alt="" class="feature_icon_2 custom-animation2">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_5.png')?>" alt=""
+            class="feature_icon_2 custom-animation2">
     </section>
     <!--::about_us part end::-->
 
@@ -324,7 +348,8 @@
                 </div>
             </div>
         </div>
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_2.png')?>" alt="" class="feature_icon_2 custom-animation2">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_2.png')?>" alt=""
+            class="feature_icon_2 custom-animation2">
     </section>
     <!--::pricing part end::-->
 
@@ -374,49 +399,57 @@
                 </div>
             </div>
         </div>
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_4.png')?>" alt="" class="feature_icon_2 custom-animation2">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_4.png')?>" alt=""
+            class="feature_icon_2 custom-animation2">
     </section>
     <!--::about_us part end::-->
 
     <!--::subscribe us part end::-->
     <section class="subscribe_part padding_bottom" id="create">
         <div class="container">
-              <div class="col-12">
-          <h2 class="contact-title">Get Started</h2>
-        </div>
+            <div class="col-12">
+                <h2 class="contact-title">Get Started</h2>
+            </div>
             <div class="row subscribe_form">
-              <div class="col-lg-12">
-                <form class="form-contact contact_form" action="<?= base_url('action/accountCreation') ?>" method="post" id="contactForm"
-                  novalidate="novalidate">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
-                          onblur="this.placeholder = 'Enter full your names'" placeholder='Enter your name'>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
-                          onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address'>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-group">
-                        <input class="form-control" name="phone" id="phone" type="text" onfocus="this.placeholder = ''"
-                          onblur="this.placeholder = 'Enter phone'" placeholder='Enter phone'>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="alert response"></div>
-                  <div class="form-group mt-3">
-                    <button type="submit" class="button button-contactForm btn_1">Create <i class="flaticon-right-arrow"></i> </button>
-                  </div>
-                </form>
-              </div>
+                <div class="col-lg-12">
+                    <form class="form-contact contact_form" action="<?= base_url('action/accountCreation') ?>"
+                        method="post" id="contactForm" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" name="name" id="name" type="text"
+                                        onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter full your names'"
+                                        placeholder='Enter your name'>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control" name="email" id="email" type="email"
+                                        onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter email address'"
+                                        placeholder='Enter email address'>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="phone" id="phone" type="text"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter phone'"
+                                        placeholder='Enter phone'>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert response"></div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button button-contactForm btn_1">Create <i
+                                    class="flaticon-right-arrow"></i> </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_5.png')?>" alt="" class="feature_icon_2 custom-animation2">
+        <img src="<?= base_url('assets/landing/img/animate_icon/Ellipse_5.png')?>" alt=""
+            class="feature_icon_2 custom-animation2">
     </section>
     <!--::subscribe us part end::-->
 
@@ -462,13 +495,16 @@
             <div class="row">
                 <div class="col-sm-8 col-md-4 col-lg-4">
                     <div class="single_footer_part">
-                        <a href="#home" class="footer_logo_iner"> <img src="<?= base_url('assets/landing/img/logos/footer_logo.png')?>" alt="#"> </a>
-                        <p>Ad Server, your one stop place for all Advertising needs. Connecting advertisers to publishers and ensuring that you reach all you potential clients and also that the publishers gain extra income!
+                        <a href="#home" class="footer_logo_iner"> <img
+                                src="<?= base_url('assets/landing/img/logos/footer_logo.png')?>" alt="#"> </a>
+                        <p>Ad Server, your one stop place for all Advertising needs. Connecting advertisers to
+                            publishers and ensuring that you reach all you potential clients and also that the
+                            publishers gain extra income!
                         </p>
                     </div>
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-2">
-                    
+
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-2">
                     <div class="single_footer_part">
@@ -476,8 +512,10 @@
                         <ul class="list-unstyled">
                             <li><a href="https://simaneka.com" target="_blank">Website</a></li>
                             <li><a href="https://www.facebook.com/simanekaIT" target="_blank">Facebook</a></li>
-                            <li><a href="https://www.instagram.com/simanekatechnologies/" target="_blank">Instagram</a></li>
-                            <li><a href="https://www.linkedin.com/company/71437916/admin/feed/posts/" target="_blank">Linkedin</a></li>
+                            <li><a href="https://www.instagram.com/simanekatechnologies/" target="_blank">Instagram</a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/company/71437916/admin/feed/posts/"
+                                    target="_blank">Linkedin</a></li>
                         </ul>
                     </div>
                 </div>
@@ -485,11 +523,17 @@
                     <div class="single_footer_part">
                         <h4>Quick Links</h4>
                         <ul class="list-unstyled">
-                            <li><a target="_blank" href="https://www.adjust.com/glossary/ad-server-definition/">Definition</a></li>
+                            <li><a target="_blank"
+                                    href="https://www.adjust.com/glossary/ad-server-definition/">Definition</a></li>
                             <li><a target="_blank" href="https://www.youtube.com/watch?v=FAg3XE9uJkI">Video</a></li>
-                            <li><a target="_blank" href="https://smartyads.com/blog/what-is-an-ad-server#:~:text=These%20rules%20include%20such%20settings,ad%20reporting%2C%20and%20ad%20billing.">How It Works</a></li>
-                            <li><a target="_blank" href="https://www.vistarmedia.com/blog/how-ad-serving-works">Ad Serving</a></li>
-                            <li><a target="_blank" href="https://www.g2.com/products/ad-serving-tool/competitors/alternatives">Tools</a></li>
+                            <li><a target="_blank"
+                                    href="https://smartyads.com/blog/what-is-an-ad-server#:~:text=These%20rules%20include%20such%20settings,ad%20reporting%2C%20and%20ad%20billing.">How
+                                    It Works</a></li>
+                            <li><a target="_blank" href="https://www.vistarmedia.com/blog/how-ad-serving-works">Ad
+                                    Serving</a></li>
+                            <li><a target="_blank"
+                                    href="https://www.g2.com/products/ad-serving-tool/competitors/alternatives">Tools</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -510,8 +554,10 @@
                 <div class="col-lg-8">
                     <div class="copyright_text">
                         <P>
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
-                            All rights reserved | Developed by 
+                            Copyright &copy;<script>
+                            document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | Developed by
                             <a href="https://simaneka.com" target="_blank">
                                 Simaneka Intellectual Technologies
                             </a>
@@ -521,9 +567,12 @@
                 <div class="col-lg-4">
                     <div class="footer_icon social_icon">
                         <ul class="list-unstyled">
-                            <li><a href="https://www.facebook.com/Simaneka-109991907533210" class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="https://www.instagram.com/simanekatechnologies/" class="single_social_icon"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="https://www.linkedin.com/company/71437916" class="single_social_icon"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="https://www.facebook.com/Simaneka-109991907533210"
+                                    class="single_social_icon"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.instagram.com/simanekatechnologies/" class="single_social_icon"><i
+                                        class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/company/71437916" class="single_social_icon"><i
+                                        class="fab fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>

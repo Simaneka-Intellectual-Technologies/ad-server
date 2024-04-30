@@ -1,14 +1,40 @@
+import React, { useEffect } from 'react';
 import axios from 'axios';
 
-    axios.post('https://ad.simaneka.com/api/get?type=Vertical%20Strip', null, {
-    headers: {
-    'authorisation': 'XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz',
-    'Cookie': 'ci_session=5f355c0042c75425ca6d8dce3cf0560109092bb2'
-    }
-    })
-    .then(response => {
-    console.log(response.data); // Handle the response data
-    })
-    .catch(error => {
-    console.error('Error:', error);
-    });
+const YourComponent = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          'https://ad.simaneka.com/api/get',
+          {
+            type: 'Light Square',
+            tags: 'music,party'
+          },
+          {
+            headers: {
+              authorisation: 'XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz'
+            }
+          }
+        );
+        console.log(response.data);
+        document.querySelector('.advertIMG').src = response.data.link;
+        document.querySelector('.advertIMG').alt = response.data.alt;
+        document.querySelector('.anchorElement').href = response.data.href;
+        document.querySelector('.headerText').innerHTML = response.data.message;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {/* Your JSX here */}
+    </div>
+  );
+};
+
+export default YourComponent;

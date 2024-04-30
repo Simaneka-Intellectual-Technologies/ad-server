@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        <?= APP_NAME.' Admin Panel' ?>
+        <?= APP_NAME . ' Admin Panel' ?>
     </title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="<?= base_url('assets/admin/vendors/feather/feather.css') ?>">
@@ -24,6 +24,12 @@
     <link rel="stylesheet" href="<?= base_url('assets/admin/css/vertical-layout-light/style.css') ?>">
     <!-- endinject -->
     <link rel="shortcut icon" href="<?= base_url('assets/admin/images/logos/logo_7.png') ?>" />
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- DataTables Buttons CSS -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="author" content="<?= APP_NAME ?>" />
@@ -58,7 +64,7 @@
     <meta name="twitter:image" content="<?= base_url('assets/admin/images/logos/logo_2.png') ?>" />
     <link href="<?= base_url() ?>" rel="canonical">
 
-    <?php if($_SERVER['DOCUMENT_ROOT'] != 'C:/xampp/htdocs'): ?>
+    <?php if ($_SERVER['DOCUMENT_ROOT'] != 'C:/xampp/htdocs'): ?>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1CCE7P5GP"></script>
         <script>
@@ -73,34 +79,34 @@
         </script>
 
         <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "headline": "<?= APP_NAME ?>",
+            "description": "<?= APP_NAME ?> aids individuals, businesses and companies manage their clients and keep track of the imformation pertaining the clients",
+            "keywords": "Clients, management, systems, track, billing, recurring, money, finances, simaneka, intellectual, technologies, filing, data, information",
+            "@type": "WebPage",
+            "author":
+
+            {
+                "@type": "Organization",
+                "url": "<?= APP_NAME ?>"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "<?= APP_NAME ?>",
+                "url": "<?= base_url() ?>",
+                "sameAs": [""],
+                "logo":
+
                 {
-                    "@context": "https://schema.org/",
-                    "headline": "<?= APP_NAME ?>",
-                    "description": "<?= APP_NAME ?> aids individuals, businesses and companies manage their clients and keep track of the imformation pertaining the clients",
-                    "keywords": "Clients, management, systems, track, billing, recurring, money, finances, simaneka, intellectual, technologies, filing, data, information",
-                    "@type": "WebPage",
-                    "author":
-
-                    {
-                        "@type": "Organization",
-                        "url": "<?= APP_NAME ?>"
-                    },
-                    "publisher": {
-                        "@type": "Organization",
-                        "name": "<?= APP_NAME ?>",
-                        "url": "<?= base_url() ?>",
-                        "sameAs": [""],
-                        "logo":
-
-                        {
-                            "@type": "ImageObject",
-                            "url": "<?= base_url('assets/admin/images/logos/logo_2.png') ?>",
-                            "width": "260",
-                            "height": "60"
-                        }
-                    }
+                    "@type": "ImageObject",
+                    "url": "<?= base_url('assets/admin/images/logos/logo_2.png') ?>",
+                    "width": "260",
+                    "height": "60"
                 }
-            </script>
+            }
+        }
+        </script>
     <?php endif; ?>
 </head>
 

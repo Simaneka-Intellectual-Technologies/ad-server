@@ -5,6 +5,29 @@ class Admin_model extends CI_Model
 	{
 		$this->load->database();
 	}
+	public function billForAd($type)
+	{
+		$bill = 0;
+
+		if ($type == 'Premium')
+			$bill = 75;
+		if ($type == 'Standard')
+			$bill = 50;
+		if ($type == 'Basic')
+			$bill = 25;
+
+		$this->db->where('comp_id', $this->session->userdata('comp_id'));
+		$this->db->set('credits', '`credits`- ' . $bill, FALSE);
+		$this->db->update('companies');
+	}
+	public function topUp()
+	{
+		$this->db->where('comp_id', $this->session->userdata('comp_id'));
+		$this->db->set('credits', '`credits`+ ' . $this->input->post('amount'), FALSE);
+		if ($this->db->update('companies')) {
+			return true;
+		}
+	}
 	public function get_type($id)
 	{
 		$this->db->limit(1);
@@ -100,48 +123,49 @@ class Admin_model extends CI_Model
 	}
 	public function sendMonthlyAlert($client, $message, $charges, $inArrear, $chargeData)
 	{
-		 /* Load PHPMailer library */
-	        $this->load->library('phpmailer_lib');
-	       
-	        /* PHPMailer object */
-	        $mail = $this->phpmailer_lib->load();
-	       
-	        /* SMTP configuration */
-	        $mail->isSMTP();
-	        $mail->Host     = 'smtp.hostinger.com';
-	        $mail->SMTPAuth = true;
-	        $mail->Username = 'info@simaneka.com';
-	        $mail->Password = '15963QWErty!@#';
-	        $mail->SMTPSecure = 'ssl';
-	        $mail->Port     = 465;
-	       
-	        $mail->setFrom('info@simaneka.com', 'Client Management System');
-	        $mail->addReplyTo('info@simaneka.com', 'Support');
-	       
-	        /* Add a recipient */
-			$to = 'vardesimaneka@gmail.com';
-	        $mail->addAddress($to);
-	       
-	        /* Add cc or bcc */
-	        // $mail->addCC('info@simaneka.com');
-	        // $mail->addBCC('info@simaneka.com');
-	       
-	        /* Email subject */
-	        $mail->Subject = $client['client_name'] . ' Account Balance Notification';;
-	       
-	        /* Set email format to HTML */
-	        $mail->isHTML(true);
-	       
-	        /* Email body content */
-			$firstSight = $this->nameAndMessage($client['client_name'], $message);
-	        $mail->Body = $this->buildMailBody($firstSight, $chargeData, $inArrear);
-	       
-	        /* Send email */
-	        if(!$mail->send()){
-	            var_dump($mail->ErrorInfo);
-	        }else{
-				echo 'Sent mail to ' . $client['client_email'] . '<br>';
-	        }
+		/* Load PHPMailer library */
+		$this->load->library('phpmailer_lib');
+
+		/* PHPMailer object */
+		$mail = $this->phpmailer_lib->load();
+
+		/* SMTP configuration */
+		$mail->isSMTP();
+		$mail->Host = 'smtp.hostinger.com';
+		$mail->SMTPAuth = true;
+		$mail->Username = 'info@simaneka.com';
+		$mail->Password = '15963QWErty!@#';
+		$mail->SMTPSecure = 'ssl';
+		$mail->Port = 465;
+
+		$mail->setFrom('info@simaneka.com', 'Client Management System');
+		$mail->addReplyTo('info@simaneka.com', 'Support');
+
+		/* Add a recipient */
+		$to = 'vardesimaneka@gmail.com';
+		$mail->addAddress($to);
+
+		/* Add cc or bcc */
+		// $mail->addCC('info@simaneka.com');
+		// $mail->addBCC('info@simaneka.com');
+
+		/* Email subject */
+		$mail->Subject = $client['client_name'] . ' Account Balance Notification';
+		;
+
+		/* Set email format to HTML */
+		$mail->isHTML(true);
+
+		/* Email body content */
+		$firstSight = $this->nameAndMessage($client['client_name'], $message);
+		$mail->Body = $this->buildMailBody($firstSight, $chargeData, $inArrear);
+
+		/* Send email */
+		if (!$mail->send()) {
+			var_dump($mail->ErrorInfo);
+		} else {
+			echo 'Sent mail to ' . $client['client_email'] . '<br>';
+		}
 
 	}
 	public function nameAndMessage($name, $message)

@@ -5,6 +5,18 @@ class Main_model extends CI_Model
 	{
 		$this->load->database();
 	}
+	function record_ad_log($site, $type, $tags, $ad, $message)
+	{
+		$data = array(
+			"company" => $site,
+			"ad_type" => $type,
+			"tag_requests" => $tags,
+			"ad_served" => $ad,
+			"message" => $message,
+		);
+
+		$this->db->insert("ad_request_logs", $data);
+	}
 	public function get_where($table, $data)
 	{
 		return $this->db->get_where($table, $data)->result_array();
@@ -21,16 +33,100 @@ class Main_model extends CI_Model
 
 		return $this->db->get_where('ads', $where)->row_array();
 	}
-	public function get_ad($type)
+	public function get_ad($type, $tags, $site)
 	{
-		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND type = '" . $type ."' AND status = 1 ORDER BY RAND() LIMIT 1";
+		$splitTags = explode(',', $tags);
+		$addTags = '';
+
+
+		// print_r($splitTags);
+		// die();
+		if (count($splitTags) > 0) {
+			foreach ($splitTags as $index => $tag) {
+				$addTags .= (($index > 0) ? ' OR' : ' AND (') . " tags LIKE '%" . $tag . "%' ";
+			}
+
+			$addTags .= ')';
+		}
+		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND type = '" . $type . "' AND visibility = '" . $site['company_type'] . "' " . $addTags . " AND status = 1 ORDER BY RAND() LIMIT 1";
+
 		$query = $this->db->query($sql);
 
-		$this->db->where('ad_id', $query->row_array()['ad_id']);
-		$this->db->set('impressions', '`impressions`+ 1', FALSE);
-		$this->db->update('ads');
+		if ($query->num_rows() > 0) {
 
-		return $query->row_array();
+			$this->db->where('ad_id', $query->row_array()['ad_id']);
+			$this->db->set('impressions', '`impressions`+ 1', FALSE);
+			$this->db->update('ads');
+
+			$message = 'We got your ' . str_replace('_', ' ', $type) . ' advertisment ready!';
+			$ad = $query->row_array()['title'] . ' ' . $query->row_array()['ad_id'] . ' ' . $query->row_array()['file'] . ' ' . $query->row_array()['redirect_link'];
+			$this->record_ad_log($site['title'], $type, $tags, $ad, $message);
+			return array(
+				'status' => true,
+				'message' => $message,
+				'ad' => $query->row_array()
+			);
+		}
+
+		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND type = '" . $type . "' " . $addTags . " AND status = 1 ORDER BY RAND() LIMIT 1";
+		$query = $this->db->query($sql);
+
+
+		if ($query->num_rows() > 0) {
+
+			$this->db->where('ad_id', $query->row_array()['ad_id']);
+			$this->db->set('impressions', '`impressions`+ 1', FALSE);
+			$this->db->update('ads');
+
+			$message = 'We did not find a ' . str_replace('_', ' ', $type) . ' advertisment but not on a ' . $site['company_type'] . ' standard and got you another type!';
+			$ad = $query->row_array()['title'] . ' ' . $query->row_array()['ad_id'] . ' ' . $query->row_array()['file'] . ' ' . $query->row_array()['redirect_link'];
+			$this->record_ad_log($site['title'], $type, $tags, $ad, $message);
+			return array(
+				'status' => true,
+				'message' => $message,
+				'ad' => $query->row_array()
+			);
+		}
+
+		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() " . $addTags . " AND status = 1 ORDER BY RAND() LIMIT 1";
+		$query = $this->db->query($sql);
+
+
+		if ($query->num_rows() > 0) {
+
+			$this->db->where('ad_id', $query->row_array()['ad_id']);
+			$this->db->set('impressions', '`impressions`+ 1', FALSE);
+			$this->db->update('ads');
+
+			$message = 'We did not find a ' . str_replace('_', ' ', $type) . ' advertisment and got you another type!';
+			$ad = $query->row_array()['title'] . ' ' . $query->row_array()['ad_id'] . ' ' . $query->row_array()['file'] . ' ' . $query->row_array()['redirect_link'];
+			$this->record_ad_log($site['title'], $type, $tags, $ad, $message);
+			return array(
+				'status' => true,
+				'message' => $message,
+				'ad' => $query->row_array()
+			);
+		}
+
+		$sql = "SELECT * FROM ads WHERE start_date < CURDATE() AND end_date > CURDATE() AND status = 1 ORDER BY RAND() LIMIT 1";
+		$query = $this->db->query($sql);
+
+
+		if ($query->num_rows() > 0) {
+
+			$this->db->where('ad_id', $query->row_array()['ad_id']);
+			$this->db->set('impressions', '`impressions`+ 1', FALSE);
+			$this->db->update('ads');
+
+			$message = 'We got a random ad!';
+			$ad = $query->row_array()['title'] . ' ' . $query->row_array()['ad_id'] . ' ' . $query->row_array()['file'] . ' ' . $query->row_array()['redirect_link'];
+			$this->record_ad_log($site['title'], $type, $tags, $ad, $message);
+			return array(
+				'status' => true,
+				'message' => $message,
+				'ad' => $query->row_array()
+			);
+		}
 	}
 	public function buildRandomString()
 	{
@@ -97,59 +193,59 @@ class Main_model extends CI_Model
 
 		$to = $email;
 		$subject = $name . ' Account Creation';
-		
-		 /* Load PHPMailer library */
-        $this->load->library('phpmailer_lib');
-       
-        /* PHPMailer object */
-        $mail = $this->phpmailer_lib->load();
-       
-        /* SMTP configuration */
-        $mail->isSMTP();
-        $mail->Host     = 'smtp.hostinger.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'info@simaneka.com';
-        $mail->Password = '15963QWErty!@#';
-        $mail->SMTPSecure = 'ssl';
-        $mail->Port     = 465;
-       
-        $mail->setFrom('info@simaneka.com', SHORT_APP_NAME);
-        $mail->addReplyTo('info@simaneka.com', 'Varde Daniel');
-       
-        /* Add a recipient */
-        $mail->addAddress($to);
-       
-        /* Add cc or bcc */
-        $mail->addCC('info@simaneka.com');
-        // $mail->addBCC('info@simaneka.com');
-       
-        /* Email subject */
-        $mail->Subject = $subject;
-       
-        /* Set email format to HTML */
-        $mail->isHTML(true);
-       
-        /* Email body content */
-        $mail->Body = $emailBody;
-       
-        /* Send email */
-        if(!$mail->send()){
-            return array(
-					'status' => false,
-					'message' => $mail->ErrorInfo
-				);
-        }else{
+
+		/* Load PHPMailer library */
+		$this->load->library('phpmailer_lib');
+
+		/* PHPMailer object */
+		$mail = $this->phpmailer_lib->load();
+
+		/* SMTP configuration */
+		$mail->isSMTP();
+		$mail->Host = 'smtp.hostinger.com';
+		$mail->SMTPAuth = true;
+		$mail->Username = 'info@simaneka.com';
+		$mail->Password = '15963QWErty!@#';
+		$mail->SMTPSecure = 'ssl';
+		$mail->Port = 465;
+
+		$mail->setFrom('info@simaneka.com', SHORT_APP_NAME);
+		$mail->addReplyTo('info@simaneka.com', 'Varde Daniel');
+
+		/* Add a recipient */
+		$mail->addAddress($to);
+
+		/* Add cc or bcc */
+		$mail->addCC('info@simaneka.com');
+		// $mail->addBCC('info@simaneka.com');
+
+		/* Email subject */
+		$mail->Subject = $subject;
+
+		/* Set email format to HTML */
+		$mail->isHTML(true);
+
+		/* Email body content */
+		$mail->Body = $emailBody;
+
+		/* Send email */
+		if (!$mail->send()) {
 			return array(
-					'status' => true,
-					'message' => "Account creation successfully, please cheack your mail for verification!"
-				);
-        }
+				'status' => false,
+				'message' => $mail->ErrorInfo
+			);
+		} else {
+			return array(
+				'status' => true,
+				'message' => "Account creation successfully, please cheack your mail for verification!"
+			);
+		}
 	}
-	
+
 	public function buildMailBody($email, $link, $password, $companyCode, $name, $message)
 	{
-		return 'Hi, '. $name .' <br>'
-		. $message. '<br><br>
+		return 'Hi, ' . $name . ' <br>'
+			. $message . '<br><br>
 		<a href="' . $link . '" style="text-decoration:none; background-color:#1F6B6D; padding:10px 20px; border:none; color:#fff; outline:none; border-radius: 10px" >Click Here To Activate Your Account</a>
 
 		<br><br>

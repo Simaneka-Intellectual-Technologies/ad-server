@@ -9,34 +9,21 @@
         </li>
         <li class="nav-item <?= ($this->uri->segment(3) == 'ads') ? 'active' : '' ?>">
             <a class="nav-link" href="<?= base_url('admin/page/ads') ?>">
-                <i class="mdi mdi-account-card-details menu-icon"></i>
+                <i class="mdi mdi-file-image menu-icon"></i>
                 <span class="menu-title">Ads</span>
             </a>
         </li>
-        
+
         <li class="nav-item <?= ($this->uri->segment(3) == 'publish') ? 'active' : '' ?>">
             <a class="nav-link" href="<?= base_url('admin/page/publish') ?>">
-                <i class="mdi mdi-account-card-details menu-icon"></i>
+                <i class="mdi mdi-code-braces menu-icon"></i>
                 <span class="menu-title">Code Publish</span>
             </a>
         </li>
-        <li class="nav-item <?= ($this->uri->segment(3) == 'bidders') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/bidders') ?>">
-                <i class="mdi mdi-account-card-details menu-icon"></i>
-                <span class="menu-title">Evaluating Bidders</span>
-            </a>
-        </li>
-        <li class="nav-item <?= ($this->uri->segment(3) == 'inventory') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/inventory') ?>">
-                <i class="mdi mdi-account-card-details menu-icon"></i>
-                <span class="menu-title"> inventory</span>
-            </a>
-        </li>
-        <li class="nav-item <?= ($this->uri->segment(3) == 'campaigns') ? 'active' : '' ?>">
-            <a class="nav-link" href="<?= base_url('admin/page/campaigns') ?>">
-                <i class="mdi mdi-account-card-details menu-icon"></i>
-                <span class="menu-title"> marketing campaign
-</span>
+        <li class="nav-item <?= ($this->uri->segment(3) == 'bill') ? 'active' : '' ?>">
+            <a class="nav-link billBtn" href="<?= base_url('admin/page/bill') ?>">
+                <i class="mdi mdi-currency-usd menu-icon"></i>
+                <span class="menu-title">Bill</span>
             </a>
         </li>
         <li class="nav-item nav-category">System</li>
@@ -80,3 +67,39 @@
     </ul>
 </nav>
 <div class="main-panel">
+
+    <script>
+        const billBtn = document.querySelector('.billBtn')
+        billBtn.addEventListener('click', () => {
+            var formdata = new FormData();
+
+
+            var ajax = new XMLHttpRequest();
+            ajax.addEventListener("load", completeBillHandler, false);
+            ajax.open("POST", "<?= base_url('/admin/ajax/ads') ?>");
+            ajax.send(formdata);
+        })
+
+        function completeBillHandler(event) {
+            reply = JSON.parse(event.target.responseText);
+
+            var opt = {
+                margin: 1,
+                filename: "Bill - <?= SHORT_APP_NAME ?>.pdf",
+                image: {
+                    type: "jpeg",
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 2
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "letter",
+                    orientation: "portrait"
+                },
+            };
+            html2pdf().from(reply).set(opt).save();
+
+        }
+    </script>

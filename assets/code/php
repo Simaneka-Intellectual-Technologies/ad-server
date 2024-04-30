@@ -1,19 +1,25 @@
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://ad.simaneka.com/api/get?type=Vertical%20Strip',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_HTTPHEADER => array(
-    'authorisation: XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz',
-    'Cookie: ci_session=5f355c0042c75425ca6d8dce3cf0560109092bb2'
-  ),
-));
+curl_setopt_array(
+$curl,
+array(
+CURLOPT_URL => 'https://ad.simaneka.com/api/get',
+CURLOPT_RETURNTRANSFER => true,
+CURLOPT_ENCODING => '',
+CURLOPT_MAXREDIRS => 10,
+CURLOPT_TIMEOUT => 0,
+CURLOPT_FOLLOWLOCATION => true,
+CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+CURLOPT_CUSTOMREQUEST => 'POST',
+CURLOPT_POSTFIELDS => array(
+'type' => 'Light Square',
+'tags' => 'music,party'
+),
+CURLOPT_HTTPHEADER => array(
+'authorisation: XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz'
+),
+)
+);
 
 $response = curl_exec($curl);
 

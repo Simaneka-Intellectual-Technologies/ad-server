@@ -1,19 +1,21 @@
-var myHeaders = new Headers();
-    myHeaders.append("authorisation", "bjDw4NtKucrnQheVzP6aYAygEvfR28dB");
-    myHeaders.append("Cookie", "ci_session=ff2aa0663b882aa133094fe64ad6296ed8cb1c47");
-    var reply = null
+var formdata = new FormData();
+formdata.append("type", "Light Square");
+formdata.append("tags", "music,party");
 
-    var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    redirect: 'follow'
-    };
+var ajax = new XMLHttpRequest();
+ajax.addEventListener("load", completeHandler, false);
 
-    fetch("https://ad.simaneka.com/api/get?type=Vertical Strip", requestOptions)
-    .then(response => response.text())
-    .then(result => {
-    reply = JSON.parse(result);
-    document.querySelector('.advertisment').src = reply.link;
-    document.querySelector('.redirect').href = reply.redirect_link;
-    })
-    .catch(error => console.log('error', error));
+ajax.open("POST", "https://ad.simaneka.com/api/get");
+ajax.setRequestHeader("authorisation", "XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz");
+
+ajax.send(formdata);
+
+function completeHandler(event) {
+    var response = JSON.parse(event.target.responseText);
+
+    console.log(response);
+    document.querySelector('.advertIMG').src = response.link;
+    document.querySelector('.advertIMG').alt = response.alt;
+    document.querySelector('.anchorElement').href = response.href;
+    document.querySelector('.headerText').innerHTML = response.message;
+}

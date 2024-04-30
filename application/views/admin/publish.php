@@ -57,7 +57,7 @@
 
         langaugeSelecter.addEventListener('change', (e) => {
 
-            fetch('<?= base_url('assets/code/') ?>' + e.target.value)
+            fetch('<?= base_url('assets/code/') ?>' + e.target.value + '?v=4')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

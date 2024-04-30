@@ -1,16 +1,10 @@
-var headers = {
-  'authorisation': 'XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz',
-  'Cookie': 'ci_session=5f355c0042c75425ca6d8dce3cf0560109092bb2'
-};
-var request = http.Request('POST', Uri.parse('https://ad.simaneka.com/api/get?type=Vertical Strip'));
+import 'package:http/http.dart' as http;
 
-request.headers.addAll(headers);
+void main() async {
+  var url = 'https://ad.simaneka.com/api/get';
+  var headers = {'authorisation': 'XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz'};
+  var body = {'type': 'Light Square', 'tags': 'music,party'};
 
-http.StreamedResponse response = await request.send();
-
-if (response.statusCode == 200) {
-  print(await response.stream.bytesToString());
-}
-else {
-  print(response.reasonPhrase);
+  var response = await http.post(Uri.parse(url), headers: headers, body: body);
+  print(response.body);
 }
