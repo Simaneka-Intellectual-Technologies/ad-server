@@ -120,7 +120,7 @@ class Admin extends CI_Controller
 				$data['company'] = $this->admin_model->get_where('companies', null, true, null)[0];
 				$data['packages'] = $this->admin_model->get_where('packages', null, false, null);
 			} elseif ($page == 'publish') {
-
+				$data['company'] = $this->admin_model->get_where('companies', null, true, null)[0];
 			} elseif ($page == 'bill') {
 				$data['ads'] = $this->admin_model->get_where('ads', null, true, null);
 				$data['company'] = $this->admin_model->get_where('companies', null, true, null)[0];

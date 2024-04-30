@@ -1,27 +1,27 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from "react";
+import axios from "axios";
 
 const YourComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          'https://ad.simaneka.com/api/get',
+          "https://ad.simaneka.com/api/get",
           {
-            type: 'Light Square',
-            tags: 'music,party'
+            type: "Light Square",
+            tags: "music,party",
           },
           {
             headers: {
-              authorisation: 'XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz'
-            }
+              authorisation: "auth_code",
+            },
           }
         );
         console.log(response.data);
-        document.querySelector('.advertIMG').src = response.data.link;
-        document.querySelector('.advertIMG').alt = response.data.alt;
-        document.querySelector('.anchorElement').href = response.data.href;
-        document.querySelector('.headerText').innerHTML = response.data.message;
+        document.querySelector(".advertIMG").src = response.data.link;
+        document.querySelector(".advertIMG").alt = response.data.alt;
+        document.querySelector(".anchorElement").href = response.data.href;
+        document.querySelector(".headerText").innerHTML = response.data.message;
       } catch (error) {
         console.error(error);
       }
@@ -30,11 +30,7 @@ const YourComponent = () => {
     fetchData();
   }, []);
 
-  return (
-    <div>
-      {/* Your JSX here */}
-    </div>
-  );
+  return <div>{/* Your JSX here */}</div>;
 };
 
 export default YourComponent;

@@ -1,7 +1,7 @@
 import requests
 
 url = 'https://ad.simaneka.com/api/get'
-headers = {'authorisation': 'XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz'}
+headers = {'authorisation': 'auth_code'}
 data = {'type': 'Light Square', 'tags': 'music,party'}
 
 response = requests.post(url, headers=headers, data=data)

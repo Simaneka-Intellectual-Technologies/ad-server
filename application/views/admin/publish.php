@@ -52,28 +52,29 @@
 
 
     <script>
-        const langaugeSelecter = document.querySelector('.langaugeSelection'),
-            codeArea = document.querySelector('.codeArea')
+    const langaugeSelecter = document.querySelector('.langaugeSelection'),
+        codeArea = document.querySelector('.codeArea')
 
-        langaugeSelecter.addEventListener('change', (e) => {
+    langaugeSelecter.addEventListener('change', (e) => {
 
-            fetch('<?= base_url('assets/code/') ?>' + e.target.value + '?v=4')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    // Handle the JSON response data
-                    codeArea.innerHTML = data;
-                    Prism.highlightAll()
-                })
-                .catch(error => {
-                    // Handle errors
-                    console.error('There was a problem with the fetch operation:', error);
-                });
+        fetch('<?= base_url('assets/code/') ?>' + e.target.value + '?v=4')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Handle the JSON response data
+                console.log(data);
+                codeArea.innerHTML = data.replace("auth_code", "<?= $company['auth_code'] ?>")
+                Prism.highlightAll()
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('There was a problem with the fetch operation:', error);
+            });
 
-        })
+    })
     </script>
     <!-- content-wrapper ends -->

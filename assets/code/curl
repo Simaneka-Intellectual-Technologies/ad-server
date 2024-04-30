@@ -1,4 +1,4 @@
 curl -X POST "https://ad.simaneka.com/api/get" \
--H "authorisation: XUwCeuxr6ZjELa4cA9dhYSDV7fpsRMGz" \
+-H "authorisation: auth_code" \
 -F "type=Light Square" \
 -F "tags=music,party"

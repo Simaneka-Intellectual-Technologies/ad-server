@@ -128,12 +128,12 @@ class Main_model extends CI_Model
 			);
 		}
 	}
-	public function buildRandomString()
+	public function buildRandomString($length)
 	{
 		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$charactersLength = strlen($characters);
 		$randomString = '';
-		for ($i = 0; $i < 16; $i++) {
+		for ($i = 0; $i < $length; $i++) {
 			$randomString .= $characters[random_int(0, $charactersLength - 1)];
 		}
 
@@ -154,10 +154,11 @@ class Main_model extends CI_Model
 		} else {
 			$password = 'Temp' . rand(100, 1000) . 'Pass';
 			$companyCode = rand(1000, 9999);
-			$code = $this->buildRandomString();
+			$code = $this->buildRandomString(16);
 			$company = array(
 				'contact_person' => $this->input->post('name'),
 				'companyCode' => $companyCode,
+				'auth_code' => $this->buildRandomString(32),
 				'contact_person_email' => $this->input->post('email'),
 				'contact_person_cell' => $this->input->post('phone'),
 				'email' => $this->input->post('email'),
